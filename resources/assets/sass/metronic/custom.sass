@@ -1,0 +1,301 @@
+@font-face
+	font-family: 'Open Sans'
+	src: '/assets/fonts/OpenSans-Regular.ttf'
+
+@font-face
+	font-family: 'Dosis'
+	src: '/assets/fonts/Dosis-Medium.ttf'
+
+$main-color: #25c2e6
+
+// Animals
+.table-animals
+	tbody
+		tr
+			text-align: center
+
+			td
+				line-height: 44px
+
+	.table-animals-photo
+		width: 30px
+		padding: 3px
+
+#adopter-form,
+#reservation-form,
+#temporary-shelter-form,
+#street-form,
+#animal-home-form,
+#lost-form,
+#found-form
+	display: none
+
+// Design
+.page-header.navbar
+	background-color: $main-color
+
+	.page-logo 
+		padding-left: 0
+
+		.logo-default
+			margin: 7px 0 0 0
+
+	.top-menu 
+		.navbar-nav 
+			> li.dropdown 
+				.dropdown-toggle 
+					> i
+						color: #fff
+
+.page-footer
+	margin-top: 30px
+
+	.page-footer-inner
+		display: block
+		float: none
+		text-align: center
+
+.page-header.navbar .hor-menu .navbar-nav > li.active > a, .page-header.navbar .hor-menu .navbar-nav > li.active > a, .page-header.navbar .hor-menu .navbar-nav > li.current > a, .page-header.navbar .hor-menu .navbar-nav > li.current > a
+	background-color: #fefefe !important
+
+.page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.active > a:hover, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.current > a, .page-header.navbar .hor-menu.hor-menu-light .navbar-nav > li.current > a:hover
+	color: #888
+
+.page-sidebar .page-sidebar-menu > li.heading, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.heading
+	padding: 40px 15px 15px 15px
+
+.page-sidebar .page-sidebar-menu li.heading.start
+	padding: 15px
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle .badge.badge-default
+	background-color: red
+
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a, .page-sidebar .page-sidebar-menu > li.active > a, .page-sidebar .page-sidebar-menu > li.active.open > a
+	background-color: $main-color
+
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a:hover, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a:hover, .page-sidebar .page-sidebar-menu > li.active > a:hover, .page-sidebar .page-sidebar-menu > li.active.open > a:hover
+	background-color: darken($main-color, 5)
+
+body.noscroll
+	overflow: hidden
+
+.xdsoft_datetimepicker .xdsoft_label
+	z-index: 0 !important
+
+.mt-element-list .list-news.mt-list-container
+	border: 1px #e7ecf1 solid
+
+.mt-element-list .list-news.mt-list-container ul > .mt-list-item:first-child
+	padding-bottom: 0
+
+button, input, optgroup, select, textarea
+	font-weight: normal
+
+.list-group
+	.list-group-item
+		&.active
+			background-color: #eee
+			border: 1px solid #ddd 
+			color: #555
+
+.collapse-control-translation
+	margin-bottom: 20px
+
+.collapse-translation
+	margin-bottom: 50px
+
+.btn-primary
+	background-color: $main-color
+	border-color: darken($main-color, 5)
+
+	&:hover,
+	&:focus,
+	&:active,
+	&:active:hover,
+	&:active:focus,
+	.active,
+	.focus,
+	&.dropdown-toggle
+		background-color: darken($main-color, 10)
+		border-color: darken($main-color, 15)
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus
+	background-color: $main-color
+	border-color: $main-color
+
+.pagination > li > a, .pagination > li > span
+	color: $main-color
+
+.faq-content-1 .faq-section > .faq-content .panel-heading .accordion-toggle
+	font-weight: normal
+
+span[data-toggle="popover"]
+	border-bottom: 1px dashed #999
+
+.btn-help
+	margin-top: 4px
+
+.form-section
+	margin-bottom: 20px
+	font-size: 1.5em
+	border-bottom: 1px solid #e7ecf1
+	padding-bottom: 10px
+
+form
+	.row
+		margin-top: 10px
+
+		&:first-child
+			margin-top: 0
+
+// Dropzone
+.dropzone
+	border: 2px dashed #ddd
+	text-align: center
+	padding: 80px 20px
+	background-color: #eee
+
+	.dz-message
+		font-size: 1.5em
+
+		small
+			font-size: 0.7em
+
+	&:hover
+		cursor: pointer
+		border-color: #aaa
+
+
+// Tables
+.table
+
+	.table-actions
+		max-width: 150px
+		min-width: 95px
+
+		.col-md-6
+			padding: 0
+
+			&:first-child
+				padding-right: 2.5px
+
+			&:nth-child(2)
+				padding-left: 2.5px
+
+
+.table
+	&.table-center
+		tbody
+			tr
+				text-align: center
+
+				td
+					line-height: 34px
+	tr
+		td:not(.table-row-image),
+		th:not(.table-row-image)
+			min-width: 150px
+
+.changelog
+	ul
+		li
+			margin: 5px 0
+				
+@media all and (max-width: 1200px)
+	.col-action-buttons
+		padding: 0
+
+		a.btn
+			padding: 6px
+
+@media all and (max-width: 1200px) and (min-width: 991px)
+	.animal-menu
+		padding-right: 0
+		a
+			padding: 10px
+		i
+			display: none !important
+
+@media all and (max-width: 991px)
+	.page-content-wrapper
+		.page-content
+			padding: 20px 0 20px 0 !important
+
+	.page-sidebar.navbar-collapse
+		position: fixed
+		width: 250px
+		left: -250px
+		transition: all 200ms
+		z-index: 1
+		opacity: 0
+		top: 0
+		overflow-y: scroll
+		height: 100%
+		padding: 5px 10px 5px 5px
+		margin-top: 0
+
+	.page-sidebar.navbar-collapse.in
+		left: -20px
+		opacity: 1
+		position: fixed
+		margin-top: 0
+
+@media all and (max-width: 480px)
+	.page-header.navbar
+		padding: 0
+
+	body
+		background: #fff
+
+	.top-menu
+		display: none !important
+
+	.page-content-wrapper
+		.page-content
+			padding: 20px 10px !important
+
+// Login
+.login
+	background-color: $main-color !important
+
+	.copyright
+		color: white
+
+	.recovery-form
+		button
+			display: block
+			margin: 0 auto
+
+// Megamenu
+ul.responsive-megamenu
+	overflow-y: scroll
+	white-space: nowrap
+	margin: 0
+	padding: 0 0 20px
+
+	li
+		display: inline-block
+		margin: 10px
+
+
+// Fullcalendar
+.fc-day-grid-event > .fc-content
+	white-space: normal !important
+	padding: 5px
+	margin: 4px
+
+.dz-upload
+	display: block
+	background-color: #4CAF50
+	height: 20px
+	width: 0%
+	border-radius: 5px
+	margin: 5px 0
+
+.dz-error
+	display: block
+	background-color: #e43a45
+	height: 20px
+	width: 100%
+	border-radius: 5px
+	margin: 5px 0

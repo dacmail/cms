@@ -1,0 +1,21 @@
+<?php
+
+$finder = Symfony\Component\Finder\Finder::create()
+	->notPath('bootstrap/cache')
+	->notPath('storage')
+	->notPath('vendor')
+    ->in(__DIR__)
+    ->name('*.php')
+    ->ignoreDotFiles(true)
+    ->ignoreVCS(true);
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@PSR2' => true,
+        'blank_line_after_namespace' => true,
+        'array_syntax' => array('syntax' => 'short'),
+        'single_blank_line_before_namespace' => true,
+        'method_separation' => true,
+        'method_argument_space' => true
+    ])
+    ->setFinder($finder);
