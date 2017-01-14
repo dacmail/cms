@@ -56,6 +56,9 @@ class NewShelter extends Command
             $web->email = $this->argument('email');
         $web->save();
 
-        $this->info('Shelter created successfully');
+        $code = mt_rand(00000, 99999);
+        $web->setConfig('install_code', $code);
+
+        $this->info('Shelter created successfully. The security code is: ' . $code);
     }
 }
