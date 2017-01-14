@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\SeedDevelopmentData::class,
-        Commands\MigrateFromOld::class,
+        Commands\NewShelter::class
     ];
 
     /**

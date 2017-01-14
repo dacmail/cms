@@ -14,13 +14,10 @@ use App\Models\Partners\Partner;
 use App\Models\Finances\Finance;
 use App\Models\Calendar\Calendar;
 use App\Helpers\Traits\LogsActivity;
-use App\Models\Posts\Post;
-use App\Models\Posts\Category;
+use App\Models\Posts\{Post, Category};
 use App\Models\Veterinarians\Veterinary;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Location\Country;
-use App\Models\Location\State;
-use App\Models\Location\City;
+use App\Models\Location\{Country, State, City};
 
 class Web extends BaseModel
 {
@@ -39,7 +36,7 @@ class Web extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'description', 'email', 'phone', 'address', 'city_id', 'state_id', 'country_id',
+        'name', 'description', 'email', 'phone', 'address', 'city_id', 'state_id', 'country_id',
         'contact_name', 'contact_email', 'contact_phone', 'logo', 'config'
     ];
 
