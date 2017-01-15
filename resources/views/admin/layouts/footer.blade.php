@@ -1,6 +1,6 @@
 <!-- BEGIN FOOTER -->
     <div class="page-footer">
-        <div class="page-footer-inner"> 2016 &copy; {{ config('protecms.cms.name') }} v{{ config('protecms.cms.version') }} por <a target="_blank" href="http://jaimesares.com">Jaime Sares</a>
+        <div class="page-footer-inner"> 2015-{{ date('Y') }} &copy; {{ config('protecms.cms.name') }} v{{ config('protecms.cms.version') }} por <a target="_blank" href="http://jaimesares.com">Jaime Sares</a>
         </div>
         <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>

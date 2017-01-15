@@ -44,3 +44,22 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el calendario de la protectora.</p>
+    <p>Aquí aparecen los distintos eventos creados y los registros de salud de los animales que se haya especificado la publicación en el calendario. Se puede ir navegando por días, semanas y meses y en el apartado agenda aparece un resumen de todos los eventos del mes.</p>
+
+    <h4>Permisos</h4>
+    <p>En esta página existen dos tipos de permisos: El voluntario puede editar y eliminar un evento o solo puede verlo.</p>
+    <p>Si ve estos botones es que tiene acceso a editar y eliminar el evento.</p>
+    <p>
+        <button class="btn btn-default">Cerrar</button>
+        <button class="btn btn-danger">Eliminar</button>
+        <button class="btn btn-info">Actualizar</button>
+    </p>
+    <p>Sin embargo si solo ve el botón de cerrar, es que solo tiene permisos para ver el evento y no para actualizarlo o eliminarlo.</p>
+
+    <h4>Ir al evento</h4>
+    <p>Si el evento está relacionado, por ejemplo con la salud de un animal, aparecerá el botón de Ir al evento, que al pulsarlo se irá a la página de edición de la salud.</p>
+    <p><button class="btn btn-info">Ir al evento</button></p>   
+@stop

@@ -87,3 +87,11 @@
 
     {!! $veterinarians->appends($request->all())->links() !!}
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de veterinarios eliminados de la protectora.</p>
+    <p>Se pueden ordenar por nombre, perdona de contacto y correo electrónico y se pueden filtrar por nombre, persona de contacto, correo electrónico, teléfono y estado.</p>
+    <p>Haciendo clic en el siguiente botón se recuperará el veterinario y aparecerá en el listado de veterinarios.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-history"></i></button></p>
+    <p class="bg-info">Los veterinarios que permanezcan más de 30 días eliminados, se eliminarán de forma permanente.</p>
+@stop

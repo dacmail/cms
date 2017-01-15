@@ -86,3 +86,7 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>Esta página se puede editar un evento de la protectora.</p>
+@stop

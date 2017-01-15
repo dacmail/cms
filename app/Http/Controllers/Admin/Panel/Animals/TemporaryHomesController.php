@@ -51,7 +51,7 @@ class TemporaryHomesController extends BaseAdminController
      */
     public function deleted(Request $request)
     {
-        $this->authorize('delete', TemporaryHome::class);
+        $this->authorize('view', TemporaryHome::class);
 
         $total = $this->temporary_home->onlyTrashed()->count();
         $temporary_homes = $this->filterBy($this->temporary_home

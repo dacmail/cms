@@ -102,3 +102,11 @@
 
     {!! $partners->appends($request->all())->links() !!}
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de socios eliminados de la protectora.</p>
+    <p>Se pueden ordenar por nombre y correo electrónico y se pueden filtrar por nombre, correo electrónico, donación y cuota.</p>
+    <p>Haciendo clic en el siguiente botón se recuperará el socio y aparecerá en el listado de socios.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-history"></i></button></p>
+    <p class="bg-info">Los socios que permanezcan más de 30 días eliminados, se eliminarán de forma permanente.</p>
+@stop

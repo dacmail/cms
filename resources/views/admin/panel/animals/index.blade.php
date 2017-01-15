@@ -148,7 +148,10 @@
     <p>En esta página existen dos tipos de permisos: El voluntario puede editar y eliminar una ficha o solo puede verla.</p>
     <p class="bg-info">Si el voluntario solo tiene acceso a determinadas especies, solo verá estas en el listado, las demás no aparecerán.</p>
     <p>Si ve estos botones es que tiene acceso a editar y eliminar la ficha del animal.</p>
-    <p><img src="/assets/images/edit-delete-buttons.png" alt=""></p>
+    <p>
+        <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+    </p>
     <p>Sin embargo si solo ve este botón, es que solo tiene permisos para ver la ficha y no para actualizarla o eliminarla.</p>
-    <p><img src="/assets/images/see-button.png" alt=""></p>
+    <p><button class="btn btn-primary"><i class="fa fa-eye"></i></button></p>
 @stop

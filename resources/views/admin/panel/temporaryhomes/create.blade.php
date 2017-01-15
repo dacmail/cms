@@ -83,3 +83,8 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se pueden crear casas de acogida en la protectora.</p>
+    <p class="bg-info">Una vez se haya creado una casa de acogida, en la ficha del animal se podrá indicar la casa de acogida a la que pertenece.</p>
+@stop

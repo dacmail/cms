@@ -82,3 +82,7 @@
         </div>
     </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede editar un registro en las finanzas de la protectora.</p>
+@stop

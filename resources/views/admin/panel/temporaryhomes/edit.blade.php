@@ -86,3 +86,8 @@
         </div>
     </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede editar una casa de acogida de la protectora.</p>
+    <p class="bg-info">En la ficha del animal se podrá indicar la casa de acogida a la que pertenece.</p>
+@stop

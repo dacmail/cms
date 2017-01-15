@@ -357,7 +357,7 @@
 
 @section('page.help.text')
     <p>En esta página se puede editar la ficha de un animal y acceder a sus fotos, salud, apadrinamientos o exportar su ficha.</p>
-    <p>También se añadir traducciones a historia haciendo clic en el desplegable llamado "Cambiar traducción".</p>
+    <p>También se pueden añadir traducciones haciendo clic en el desplegable llamado "Cambiar traducción".</p>
     <p>Si habilita las casillas "Fecha aproximada" lo que hace es aproximarse a la fecha. Por ejemplo, si un animal tiene 5 meses y 20 días, solo aparecerá 5 meses. Otro ejemplo, si un animal tiene 1 año y 5 meses, solo aparecerá 1 año.</p>
 
     <h4>Campos del formulario</h4>

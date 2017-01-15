@@ -93,3 +93,11 @@
         </div>
     </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede crear una página en la protectora.</p>
+    <p class="bg-info">La diferencia entre artículos y páginas, es que los artículos son para publicar noticias, novedades, eventos, etc, y las páginas son para contenido más estático, por ejemplo, páginas como "quiénes somos", "voluntario", "cómo colaborar", etc.</p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Formulario:</strong><br> Inserta un formulario ya generado en la página.</p>
+@stop

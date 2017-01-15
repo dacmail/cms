@@ -100,3 +100,7 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede editar un veterinario de la protectora.</p>
+@stop

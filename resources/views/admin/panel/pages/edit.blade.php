@@ -115,3 +115,12 @@
         </div>
     </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede editar una página de la protectora.</p>
+    <p>También se pueden añadir traducciones haciendo clic en el desplegable llamado "Cambiar traducción".</p>
+    <p class="bg-info">Si modifica el enlace, la página no será accesible por el enlace antiguo, por lo tanto si ha compartido la página, por ejemplo en redes sociales, se perderá el acceso a este.</p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Formulario:</strong><br> Inserta un formulario ya generado en la página.</p>
+@stop
