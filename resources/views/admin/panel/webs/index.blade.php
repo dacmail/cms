@@ -103,3 +103,17 @@
         </div>
     </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se pueden editar los datos de la protectora como el nombre, la descripción, correo electrónico, etc...</p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Nombre:</strong><br> Nombre de la protectora</p>
+    <p><strong>Descripción:</strong><br> Descripción de la protectora</p>
+    <p><strong>Correo electrónico:</strong><br> Correo electróncio de la protectora en el que se recibirán notificaciones como las novedades del proyecto, avisos, etc.</p>
+    <p><strong>Teléfono:</strong><br> Teléfono de la protectora. Este campo no es público.</p>
+    <p><strong>Dirección:</strong><br> Dirección de la protectora. Este campo no es público.</p>
+    <p><strong>País:</strong><br> País de la protectora. Este campo no es público.</p>
+    <p><strong>Estado:</strong><br> Estado de la protectora. Este campo no es público.</p>
+    <p><strong>Ciudad:</strong><br> Ciudad de la protectora. Este campo no es público.</p>
+@stop

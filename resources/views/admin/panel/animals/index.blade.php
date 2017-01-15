@@ -139,3 +139,16 @@
 
     {!! $animals->appends($request->all())->links() !!}
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de animales de la protectora.</p>
+    <p>Se pueden ordenar por nombre y edad (también a la inversa) y se pueden filtrar por nombre, estado, especie, género y edad.</p>
+
+    <h4>Permisos</h4>
+    <p>En esta página existen dos tipos de permisos: El voluntario puede editar y eliminar una ficha o solo puede verla.</p>
+    <p class="bg-info">Si el voluntario solo tiene acceso a determinadas especies, solo verá estas en el listado, las demás no aparecerán.</p>
+    <p>Si ve estos botones es que tiene acceso a editar y eliminar la ficha del animal.</p>
+    <p><img src="/assets/images/edit-delete-buttons.png" alt=""></p>
+    <p>Sin embargo si solo ve este botón, es que solo tiene permisos para ver la ficha y no para actualizarla o eliminarla.</p>
+    <p><img src="/assets/images/see-button.png" alt=""></p>
+@stop

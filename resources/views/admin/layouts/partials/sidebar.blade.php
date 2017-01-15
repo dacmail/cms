@@ -63,6 +63,11 @@
                                 @continue
                             @endif
 
+                            {{-- Create animal permission  --}}
+                            @if ($submenu['url'] === route('admin::panel::animals::create') && ! Auth::user()->canCreateAnimals())
+                                @continue
+                            @endif
+
                             <li class="nav-item {{ (Request::fullUrl() == $submenu['url'] || Request::url() == $submenu['url']) ? 'active' : '' }}">
                                 <a href="{{ $submenu['url'] }}" class="nav-link ">
                                     <i class="{{ $submenu['icon'] }}"></i>
