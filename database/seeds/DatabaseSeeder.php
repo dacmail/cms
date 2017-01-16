@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Users\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,6 +22,14 @@ class DatabaseSeeder extends Seeder
             foreach ($statements as $stmt) {
                 DB::statement($stmt);
             }
+        }
+
+        $permissions = config('protecms.users.permissions');
+
+        foreach ($permissions as $permission) {
+            Permission::create([
+                'permission' => $permission
+            ]);
         }
     }
 }

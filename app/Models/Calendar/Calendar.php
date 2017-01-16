@@ -60,6 +60,11 @@ class Calendar extends BaseModel
         parent::setAttribute($key, $value);
     }
 
+    /**
+     * Get color by type
+     * 
+     * @return string
+     */
     public function getColorAttribute()
     {
         switch ($this->type) {

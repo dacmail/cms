@@ -32,7 +32,7 @@ $factory->define(App\Models\Posts\Category::class, function (Faker\Generator $fa
 
     return [
         'web_id' => function () {
-            return App\Models\Webs\Web::first()->id;
+            return factory(App\Models\Webs\Web::class)->create()->id;
         },
         'es' => [
             'title' => $title,
@@ -45,10 +45,10 @@ $factory->define(App\Models\Posts\Category::class, function (Faker\Generator $fa
 $factory->define(App\Models\Posts\Comment::class, function (Faker\Generator $faker) {
     return [
         'post_id' => function () {
-            return App\Models\Posts\Post::orderByRaw("RAND()")->first()->id;
+            return factory(App\Models\Posts\Post::class)->create()->id;
         },
         'user_id' => function () {
-            return App\Models\Users\User::orderByRaw("RAND()")->first()->id;
+            return factory(App\Models\Users\User::class)->create()->id;
         },
         'comment' => $faker->paragraph,
         'status' => $faker->randomElement(config('protecms.posts.comments.status'))
