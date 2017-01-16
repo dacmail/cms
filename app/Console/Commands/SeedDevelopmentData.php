@@ -6,19 +6,16 @@ use DB;
 use Image;
 use App\Models\Webs\Web;
 use App\Models\Files\File;
-use App\Models\Users\User;
 use App\Models\Pages\Page;
 use Illuminate\Console\Command;
 use App\Models\Location\Country;
+use App\Models\Partners\Partner;
 use App\Models\Calendar\Calendar;
-use App\Models\Widgets\Widget;
-use App\Models\Widgets\Link;
-use App\Models\Animals\Animal;
-use App\Models\Animals\Media;
+use App\Models\Widgets\{Widget, Link};
+use App\Models\Users\{User, Permission};
 use App\Models\Veterinarians\Veterinary;
-use App\Models\Posts\Post;
-use App\Models\Posts\Category;
-use App\Models\Posts\Comment;
+use App\Models\Posts\{Post, Category, Comment};
+use App\Models\Animals\{Animal, Media, TemporaryHome};
 
 class SeedDevelopmentData extends Command
 {
@@ -90,7 +87,7 @@ class SeedDevelopmentData extends Command
      *
      * @var int
      */
-    const PAGES = 20;
+    const PAGES = 5;
 
     /**
      * Veterinarians max to generate
@@ -104,7 +101,21 @@ class SeedDevelopmentData extends Command
      *
      * @var int
      */
-    const CALENDAR = 200;
+    const CALENDAR = 50;
+
+    /**
+     * Temporary homes max to generate
+     *
+     * @var int
+     */
+    const TEMPORARY_HOMES = 20;
+
+    /**
+     * Partners max to generate
+     *
+     * @var int
+     */
+    const PARTNERS = 100;
 
     /**
      * Create a new command instance.
@@ -128,26 +139,15 @@ class SeedDevelopmentData extends Command
     public function handle()
     {
         $this->call('migrate:refresh');
+        $this->call('db:seed');
 
         $faker = \Faker\Factory::create();
-
-        # Import locations
-        $files = ['countries.sql', 'states.sql', 'cities.sql'];
-
-        foreach ($files as $file) {
-            $sql = file_get_contents(database_path('seeds/dumps/' . $file));
-            $statements = array_filter(array_map('trim', explode(';', $sql)));
-
-            foreach ($statements as $stmt) {
-                DB::statement($stmt);
-            }
-        }
 
         # Generate web
         $this->info('Generating web');
         $web = new $this->web;
         $web->name = 'Protectora de Demostración';
-        $web->domain = null;
+        $web->domain = 'demo.dev';
         $web->subdomain = 'demo';
         $web->email = 'web@protecms.com';
         $web->country_id = 205;
@@ -156,12 +156,8 @@ class SeedDevelopmentData extends Command
         $web->installed = 1;
         $web->save();
 
-        $web->setConfigs([
-            'theme' => 'default',
-            'lang' => 'es',
-            'langs' => 'es,en',
-            'themes.default.color' => '#25c2e6'
-        ]);
+        $web->setConfigs(config('protecms.webs.config.default'));
+        $web->setConfig('animals.contact_email', $web->email);
 
         removeFolder($web->getStorageFolder());
 
@@ -175,8 +171,8 @@ class SeedDevelopmentData extends Command
         $this->info('Generating users');
         $user = factory(User::class)->create([
             'web_id' => $web->id,
-            'name' => 'Jaime Sares',
-            'email' => 'jaimesares@gmail.com',
+            'name' => 'Admin',
+            'email' => 'admin@email.com',
             'password' => 'admin',
             'type' => 'admin',
             'country_id' => 205,
@@ -189,18 +185,19 @@ class SeedDevelopmentData extends Command
         ]);
 
         # Generate posts
-        $this->info('Generating posts');
+        $this->info('Generating posts categories');
         factory(Category::class, self::POSTS_CATEGORIES)->create([
             'web_id' => $web->id
         ]);
 
-        factory(Post::class, self::POSTS)->create([
-            'web_id' => $web->id,
-            'user_id' => $user->id
-        ]);
-
-        factory(Comment::class, self::POSTS_COMMENTS)->create([
-        ]);
+        $this->info('Generating posts');
+        for ($i = 0; $i < self::POSTS; $i++) {
+            factory(Post::class)->create([
+                'web_id' => $web->id,
+                'user_id' => $user->id,
+                'category_id' => mt_rand(1, self::POSTS_CATEGORIES)
+            ]);
+        }
 
         # Generate files
         $this->info('Generating files');
@@ -210,11 +207,11 @@ class SeedDevelopmentData extends Command
 
         # Generate animals
         $this->info('Generating animals');
-        factory(Animal::class, self::ANIMALS)->create([
+        $animals = factory(Animal::class, self::ANIMALS)->create([
             'web_id' => $web->id
         ]);
 
-        foreach (Animal::all() as $animal) {
+        foreach ($animals as $animal) {
             $path = storage_path('app/web/' . $web->id . '/animals/' . $animal->id . '/photos');
 
             foreach (range(0, rand(0, self::ANIMALS_PHOTOS)) as $i) {
@@ -244,9 +241,21 @@ class SeedDevelopmentData extends Command
 
         # Generate pages
         $this->info('Generating pages');
-        factory(Page::class, self::PAGES)->create([
+        $pages = factory(Page::class, self::PAGES)->create([
             'web_id' => $web->id,
             'user_id' => $user->id
+        ]);
+
+        # Generate temporary homes
+        $this->info('Generating temporary homes');
+        $temporary_homes = factory(TemporaryHome::class, self::TEMPORARY_HOMES)->create([
+            'web_id' => $web->id
+        ]);
+
+        # Generate partners
+        $this->info('Generating partners');
+        $partners = factory(Partner::class, self::PARTNERS)->create([
+            'web_id' => $web->id
         ]);
 
         # Generate veterinarians
@@ -255,125 +264,143 @@ class SeedDevelopmentData extends Command
             'web_id' => $web->id
         ]);
 
-        # Generate widgets
-        $this->info('Generating widgets');
-        $widgets = [
-            [
-                'web_id' => $web->id,
-                'status' => 'active',
-                'side' => 'left',
-                'order' => 1,
-                'type' => 'menu',
-                'es' => [
-                    'title' => 'Menú principal'
-                ]
-            ],
-            [
-                'web_id' => $web->id,
-                'status' => 'active',
-                'side' => 'left',
-                'order' => 1,
-                'type' => 'menu',
-                'es' => [
-                    'title' => 'Otro menú'
-                ]
-            ],
-            [
-                'web_id' => $web->id,
-                'status' => 'active',
-                'side' => 'right',
-                'order' => 1,
-                'type' => 'menu',
-                'es' => [
-                    'title' => 'Otro menú'
-                ]
-            ],
-            [
-                'web_id' => $web->id,
-                'status' => 'active',
-                'side' => 'right',
-                'order' => 1,
-                'type' => 'custom',
-                'es' => [
-                    'title' => 'Otro menú',
-                    'content' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam eos totam atque, tenetur doloribus. Optio neque sint corporis? Nam tempore officia vero laudantium animi libero quis eum error ipsam facilis.</p>'
-                ]
-            ],
+        # Generate forms
+        $form = $web->forms()->create([
+            'email' => $web->email,
+            'status' => 'published',
+            'es' => [
+                'user_id' => $user->id,
+                'title' => 'Contacto',
+                'slug' => 'contacto',
+                'subject' => 'Contacto',
+                'text' => '<p>Puedes contactar con nosotros mediante el siguiente formulario.</p>'
+            ]
+        ]);
+
+        $fields = [
+            'name' => 'text',
+            'subject' => 'text',
+            'email' => 'email',
+            'message' => 'textarea'
         ];
 
-        $pages_to_widget = Page::take(5)->get();
-        $links = [
-            1 => [
-                [
-                    'widget_id' => 1,
-                    'type' => 'link',
-                    'es' => [
-                        'title' => 'Inicio',
-                        'link' => '/',
-                    ]
-                ]
-            ],
-            2 => [
-                [
-                    'widget_id' => 1,
-                    'type' => 'link',
-                    'es' => [
-                        'title' => 'Inicio',
-                        'link' => '/',
-                    ]
-                ]
-            ],
-            3 => [
-                [
-                    'widget_id' => 1,
-                    'type' => 'link',
-                    'es' => [
-                        'title' => 'Inicio',
-                        'link' => '/',
-                    ]
-                ]
-            ],
-        ];
-
-        foreach ($pages_to_widget as $page) {
-            $links[1][] = [
-                'widget_id' => 1,
-                'type' => 'link',
+        $order = 1;
+        foreach ($fields as $key => $value) {
+            $form->fields()->create([
+                'order' => $order,
+                'name' => $order,
+                'type' => $value,
+                'required' => 1,
                 'es' => [
-                    'title' => $page->title,
-                    'link' => '/' . $page->id . '-' . $page->slug,
+                    'title' => ucfirst(trans('validation.attributes.' . $key))
                 ]
-            ];
+            ]);
 
-            $links[2][] = [
-                'widget_id' => 1,
-                'type' => 'link',
-                'es' => [
-                    'title' => $page->title,
-                    'link' => '/' . $page->id . '-' . $page->slug,
-                ]
-            ];
-
-            $links[3][] = [
-                'widget_id' => 1,
-                'type' => 'link',
-                'es' => [
-                    'title' => $page->title,
-                    'link' => '/' . $page->id . '-' . $page->slug,
-                ]
-            ];
+            $order++;
         }
 
-        foreach ($widgets as $widget) {
-            $w = Widget::create($widget);
+        # Generate widgets
+        $this->info('Generating widgets');
+        $widget = $web->widgets()->create([
+            'status' => 'active',
+            'side' => 'left',
+            'order' => 1,
+            'type' => 'menu',
+            'es' => [
+                'title' => 'Menú principal'
+            ]
+        ]);
 
-            if (isset($links[$w->id])) {
-                foreach ($links[$w->id] as $link) {
-                    $w->links()->create($link);
-                }
+        $widget->links()->create([
+            'type' => 'link',
+            'es' => [
+                'title' => 'Inicio',
+                'link' => '/'
+            ]
+        ]);
+
+        foreach ($pages as $page) {
+            if ($page->status == 'published') {
+                $widget->links()->create([
+                    'type' => 'link',
+                    'es' => [
+                        'title' => $page->title,
+                        'link' => '/pagina/' . $page->id . '-' . $page->slug
+                    ]
+                ]);
             }
         }
 
+        $widget->links()->create([
+            'type' => 'link',
+            'es' => [
+                'title' => $form->title,
+                'link' => '/formulario/' . $form->id . '-' . $form->slug
+            ]
+        ]);
+
+        $widget = $web->widgets()->create([
+            'status' => 'active',
+            'side' => 'left',
+            'order' => 2,
+            'type' => 'menu',
+            'es' => [
+                'title' => 'Animales'
+            ]
+        ]);
+
+        $widget->links()->create([
+            'type' => 'link',
+            'es' => [
+                'title' => 'Todos los animales',
+                'link' => '/animales'
+            ]
+        ]);
+
+        $widget->links()->create([
+            'type' => 'link',
+            'es' => [
+                'title' => 'Perros en adopción',
+                'link' => '/animales?especie=perros&estado=en-adopcion'
+            ]
+        ]);
+
+        $widget->links()->create([
+            'type' => 'link',
+            'es' => [
+                'title' => 'Gatos en adopción',
+                'link' => '/animales?especie=gatos&estado=en-adopcion'
+            ]
+        ]);
+
+        $web->widgets()->create([
+            'status' => 'active',
+            'side' => 'right',
+            'order' => 1,
+            'type' => 'protecms',
+            'file' => 'animals_search',
+            'es' => [
+                'title' => 'Buscador de animales'
+            ]
+        ]);
+
+        $web->widgets()->create([
+            'status' => 'active',
+            'side' => 'right',
+            'order' => 2,
+            'type' => 'protecms',
+            'file' => 'last_animals',
+            'es' => [
+                'title' => 'Últimas fichas'
+            ]
+        ]);
+
         $this->info('Seed complete.');
+        $this->line('---');
+        $this->info('Now you can access to website using domain or subdomain:');
+        $this->table(['Domain', 'Subdomain'], [[$web->domain, $web->subdomain]]);
+        $this->line('---');
+        $this->info('User to login:');
+        $this->table(['Email', 'Password'], [['admin@email.com', 'admin']]);
     }
 }

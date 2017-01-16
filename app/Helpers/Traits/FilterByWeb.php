@@ -30,9 +30,13 @@ trait FilterByWeb
 
         if (Schema::hasColumn(self::getTableName(), 'web_id')
             && ! in_array(self::getTableName(), self::$excludedTables)) {
-            static::creating(function ($model) {
-                $model->web_id = app('App\Models\Webs\Web')->id;
-            });
+
+            if (! app()->runningInConsole()) {
+                static::creating(function ($model) {
+                    $model->web_id = app('App\Models\Webs\Web')->id;
+                });
+            }
+
 
             static::addGlobalScope('web', function (Builder $builder) {
                 if (app('App\Models\Webs\Web')->subdomain === 'admin' && app('App\Models\Webs\Web')->getConfig('web')) {
