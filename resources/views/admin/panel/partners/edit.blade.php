@@ -102,3 +102,9 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede editar un socio de la protectora.</p>
+
+    <p class="bg-info">Todos los datos de los socios son privados, esto quiere decir que no son accesibles de ningún otro sitio salvo el panel de administración.</p>
+@stop

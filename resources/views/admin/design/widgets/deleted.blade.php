@@ -101,3 +101,11 @@
 
     {!! $widgets->appends($request->all())->links() !!}
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de bloques eliminados de la protectora.</p>
+    <p>Se pueden ordenar por orden y se pueden filtrar por título, lado, tipo y orden.</p>
+    <p>Haciendo clic en el siguiente botón se recuperará el bloque y aparecerá en el listado de bloques.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-history"></i></button></p>
+    <p class="bg-info">Los bloques que permanezcan más de 30 días eliminados, se eliminarán de forma permanente.</p>
+@stop

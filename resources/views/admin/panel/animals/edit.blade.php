@@ -354,3 +354,16 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede editar la ficha de un animal y acceder a sus fotos, salud, apadrinamientos o exportar su ficha.</p>
+    <p>También se pueden añadir traducciones haciendo clic en el desplegable llamado "Cambiar traducción".</p>
+    <p>Si habilita las casillas "Fecha aproximada" lo que hace es aproximarse a la fecha. Por ejemplo, si un animal tiene 5 meses y 20 días, solo aparecerá 5 meses. Otro ejemplo, si un animal tiene 1 año y 5 meses, solo aparecerá 1 año.</p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Identificador:</strong><br> Identificador interno que usan algunas protectoras para identificar a sus animales.</p>
+    <p><strong>Camada:</strong><br> Identificador de la camada.</p>
+    <p><strong>Visible en la web:</strong><br> Indica si el animal puede ser visible en la web, ya sea en los listados o su ficha.</p>
+    <p><strong>Salud:</strong><br> Breve resumen de la salud del animal.</p>
+    <p><strong>Texto privado:</strong><br> Este campo puede ser útil para dejar notas del animal internamente. Este campo no es público.</p>
+@stop

@@ -8,8 +8,8 @@
         @yield('breadcrumb')
     </ul>
 
-    {{--@section('page.help')--}}
-        {{--<button id="help-tour" class="btn btn-default pull-right btn-help"><i class="fa fa-question-circle"></i> Ayuda</button>--}}
-    {{--@show--}}
+    @section('page.help')
+        <button class="btn btn-default pull-right btn-help btn-primary" data-toggle="modal" data-target="#help"><i class="fa fa-question-circle"></i> Ayuda</button>
+    @show
 </div>
 <!-- END PAGE BAR -->

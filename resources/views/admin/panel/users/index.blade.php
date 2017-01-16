@@ -108,3 +108,15 @@
 
     {!! $users->appends($request->all())->links() !!}
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de usuarios de la protectora.</p>
+    <p>Se pueden ordenar por nombre, fecha de registro, fecha de última conexión, correo electrónico y se pueden filtrar por nombre, correo electrónico, tipo, estado y último acceso.</p>
+
+    <p>Puedes editar y eliminar un usuario haciendo clic en estos botones.</p>
+    <p>
+        <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+    </p>
+    <p class="bg-info">No es posible eliminar su propio usuario. Si quiere eliminar su cuenta permanentemente póngase en contacto con un administrador.</p>
+@stop

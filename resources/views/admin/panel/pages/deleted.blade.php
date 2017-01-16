@@ -83,3 +83,11 @@
 
     {!! $pages->appends($request->all())->links() !!}
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de páginas eliminados de la protectora.</p>
+    <p>Se pueden ordenar por fecha de publicación y se pueden filtrar por título, fecha de publicación y estado.</p>
+    <p>Haciendo clic en el siguiente botón se recuperará la página y aparecerá en el listado de páginas.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-history"></i></button></p>
+    <p class="bg-info">Los páginas que permanezcan más de 30 días eliminados, se eliminarán de forma permanente.</p>
+@stop

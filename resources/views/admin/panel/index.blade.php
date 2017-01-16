@@ -125,3 +125,12 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>Esta es la página principal del panel de administración. Cuando un voluntario que tiene acceso al panel o un administrador se identifican en el sistema, ven esta página.</p>
+    <p>En ella hay 4 bloques (por el momento):</p>
+    <p><strong>Últimos animales:</strong><br> Muestra los últimos 5 animales añadidos.</p>
+    <p><strong>¡Bienvenidos a la nueva versión!:</strong><br> Muestra un mensaje de bienvenida, que podrá tener información sobre nuevas actualizaciones, correciones, etc..</p>
+    <p><strong>Últimos artículos:</strong><br> Muestra los últimos 5 artículos añadidos.</p>
+    <p><strong>Últimos usuarios:</strong><br> Muestra los últimos 5 usuarios registrados.</p>
+@endsection

@@ -93,3 +93,18 @@
 
     {!! $temporary_homes->appends($request->all())->links() !!}
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de casas de acogida de la protectora.</p>
+    <p>Se pueden ordenar por nombre y correo electrónico y se pueden filtrar por nombre, correo electrónico, teléfono y estado.</p>
+
+    <h4>Permisos</h4>
+    <p>En esta página existen dos tipos de permisos: El voluntario puede editar y eliminar una casa de acogida o solo puede verla.</p>
+    <p>Si ve estos botones es que tiene acceso a editar y eliminar casas de acogida.</p>
+    <p>
+        <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+    </p>
+    <p>Sin embargo si solo ve este botón, es que solo tiene permisos para ver casas de acogida y no para actualizarlas o eliminarlas.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-eye"></i></button></p>
+@stop
