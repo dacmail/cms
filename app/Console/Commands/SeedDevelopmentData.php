@@ -11,14 +11,10 @@ use App\Models\Pages\Page;
 use Illuminate\Console\Command;
 use App\Models\Location\Country;
 use App\Models\Calendar\Calendar;
-use App\Models\Widgets\Widget;
-use App\Models\Widgets\Link;
-use App\Models\Animals\Animal;
-use App\Models\Animals\Media;
+use App\Models\Widgets\{Widget, Link};
+use App\Models\Animals\{Animal, Media};
 use App\Models\Veterinarians\Veterinary;
-use App\Models\Posts\Post;
-use App\Models\Posts\Category;
-use App\Models\Posts\Comment;
+use App\Models\{Posts\Post, Category, Comment};
 
 class SeedDevelopmentData extends Command
 {
