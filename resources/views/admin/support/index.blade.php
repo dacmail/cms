@@ -85,3 +85,13 @@
 	</div>
 </div> -->
 @stop
+
+@section('page.help.text')
+    <p>Esta página es la página de soporte. Aquí se podrán realizar tareas como:</p>
+    <ul>
+        <li>Ir al panel de trello para ver las actualizaciones implementadas y las tareas que están por implementar.</li>
+        <li>Consultar las preguntas frecuentes.</li>
+        <li>Consultar el historial de cambios.</li>
+        <li>Enviar mensajes con suregencias, reporte de errores, etc.</li>
+    </ul>
+@stop

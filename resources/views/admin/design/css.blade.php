@@ -40,3 +40,8 @@
         </div>
     </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede añadir CSS personalizado. Esto solo afectará a la visualización de la página web.</p>
+    <p class="bg-danger">Por favor, si no tiene conocimientos de CSS, no realice cambios ya que podría afectar gravemente al diseño de la página web.</p>
+@stop

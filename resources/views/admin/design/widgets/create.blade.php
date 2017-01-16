@@ -254,3 +254,30 @@
     });
 </script>
 @endpush
+
+@section('page.help.text')
+    <p>En esta página se puede crear un bloque en la protectora.</p>
+    <p>Existen 3 tipos de bloque:</p>
+    <ul>
+        <li><strong>Menú</strong><br>Con el bloque de tipo menú se pueden crear menus e ir añadiendo enlaces a los mismos.</li>
+        <li><strong>Personalizado</strong><br>En los bloques personalizados se puede añadir el texto e imágenes que se desee. Ideal para añadir banners, carteles, secciones con imágenes...</li>
+        <li><strong>ProteCMS</strong><br>Son bloques complejos que provee el sistema, como el bloque de últimas fichas o el buscador de animales.</li>
+    </ul>
+    <p>Puede generar enlaces complejos de animales haciendo clic en el botón:</p>
+    <p><button class="btn btn-default">Generar enlace de animales</button></p>
+    </p>
+    <p class="bg-info">
+        Cuando haga clic se abrirá una ventana en la que podrá ir indicando qué estado, especie, género o localización quiere mostrar. Si no selecciona ninguno de alguna sección (por ejemplo no selecciona ningún filtro de Estado) se mostrarán todos los animales de todos los estados.
+    </p>
+
+    <p>También puede ordenar o eliminar los enlaces haciendo clic en los siguientes botones que aparecen en la página:</p>
+    <p>
+        <button class="btn btn-default"><i class="fa fa-arrow-up"></i></button>
+        <button class="btn btn-default"><i class="fa fa-arrow-down"></i></button>
+        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+    </p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Orden:</strong><br> Orden de aparición en la página web.</p>
+    <p><strong>Lado:</strong><br> Lado de aparición en la página web.</p>
+@stop

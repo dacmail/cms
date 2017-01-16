@@ -91,3 +91,8 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el historial de cambios.</p>
+    <p>Se podrán ver las novedades y corecciones implementadas cada día.</p>
+@stop

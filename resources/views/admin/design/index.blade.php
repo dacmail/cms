@@ -260,3 +260,8 @@
     });
 </script>
 @endpush
+
+@section('page.help.text')
+    <p>En esta página se pueden añadir y modificar el diseño general de la página web, como el logo, la cabecera o el favicon.</p>
+    <p class="bg-info">Por favor, respete las dimensiones recomendadas de los archivos para su óptima visualización del mismo en la página web.</p>
+@stop

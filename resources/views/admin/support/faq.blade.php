@@ -321,3 +321,8 @@
 </div>
 
 @stop
+
+@section('page.help.text')
+    <p>Esta es la página de preguntas frecuentes.</p>
+    <p>Si después de consultar esta página sigues con dudas, por favor, envía un mensaje en la sección de Contacto.</p>
+@stop
