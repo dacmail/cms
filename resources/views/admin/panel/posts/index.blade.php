@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-    <a href="{{route('admin::panel::posts::create')}}" class="btn btn-primary visible-xs-inline-block">Crear articulo</a>
+    <a href="{{route('admin::panel::posts::create')}}" class="btn btn-primary visible-xs-inline-block visible-sm-inline-block">Crear articulo</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
@@ -94,8 +94,8 @@
                                 No existen artículos con esos parámetros.
                             @else
                                 <div class="bg-info text-center">
-                                    <p>Aún no se ha creado ningún animal.</p>
-                                    <div class="col-md-offset-5 col-md-2"><a href="{{ route('admin::panel::animals::create') }}" class="btn btn-default btn-block" >Añadir animal</a></div>
+                                    <p>Aún no se ha creado ningún artículo.</p>
+                                    <div class="col-md-offset-4 col-md-4"><a href="{{ route('admin::panel::posts::create') }}" class="btn btn-default btn-block" >Crear artículo</a></div>
                                     <div class="clearfix"></div>
                                 </div>
                             @endif

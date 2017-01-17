@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-		    <a href="{{route('admin::panel::pages::create')}}" class="btn btn-primary visible-xs-inline-block">Crear página</a>
+    <a href="{{route('admin::panel::pages::create')}}" class="btn btn-primary visible-xs-inline-block visible-sm-inline-block">Crear página</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
@@ -82,10 +82,10 @@
                         <td colspan="5" class="text-center">
                             @if ($total)
                                 No existen páginas con esos parámetros.
-							@else
+                            @else
                                 <div class="bg-info text-center">
                                     <p>Aún no se ha creado ninguna página.</p>
-                                    <div class="col-md-offset-5 col-md-2"><a href="{{ route('admin::panel::pages::create') }}" class="btn btn-default btn-block" >Crear página</a></div>
+                                    <div class="col-md-offset-4 col-md-4"><a href="{{ route('admin::panel::pages::create') }}" class="btn btn-default btn-block" >Crear página</a></div>
                                     <div class="clearfix"></div>
                                 </div>
                             @endif

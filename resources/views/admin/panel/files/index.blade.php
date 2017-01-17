@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    <a href="{{route('admin::panel::files::create')}}" class="btn btn-primary visible-xs-inline-block visible-sm-inline-block">Subir archivo</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
@@ -65,7 +66,11 @@
                             @if ($total)
                                 No existen archivos con esos parámetros.
                             @else
-                                <p class="bg-info text-center">Aún no se ha creado ningún archivo.</p>
+                                <div class="bg-info text-center">
+                                    <p>Aún no se ha subido ningún archivo.</p>
+                                    <div class="col-md-offset-4 col-md-4"><a href="{{ route('admin::panel::files::create') }}" class="btn btn-default btn-block" >Subir archivo</a></div>
+                                    <div class="clearfix"></div>
+                                </div>
                             @endif
                         </td>
                     </tr>

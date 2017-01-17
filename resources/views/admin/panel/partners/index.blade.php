@@ -11,8 +11,7 @@
 @stop
 
 @section('content')
-			    <a href="{{route('admin::panel::partners::create')}}" class="btn btn-primary visible-xs-inline-block">Crear socio</a>
-
+    <a href="{{route('admin::panel::partners::create')}}" class="btn btn-primary visible-xs-inline-block visible-sm-inline-block">Crear socio</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
@@ -100,10 +99,10 @@
                         <td colspan="6" class="text-center">
                             @if ($total)
                                 No existen socios con esos parámetros.
-							@else
+                            @else
                                 <div class="bg-info text-center">
                                     <p>Aún no se ha creado ningún socio.</p>
-                                    <div class="col-md-offset-5 col-md-2"><a href="{{ route('admin::panel::partners::create') }}" class="btn btn-default btn-block" >Crear socio</a></div>
+                                    <div class="col-md-offset-4 col-md-4"><a href="{{ route('admin::panel::partners::create') }}" class="btn btn-default btn-block" >Crear socio</a></div>
                                     <div class="clearfix"></div>
                                 </div>
                             @endif

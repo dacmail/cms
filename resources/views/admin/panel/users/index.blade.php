@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+    <a href="{{route('admin::panel::users::create')}}" class="btn btn-primary visible-xs-inline-block visible-sm-inline-block">Registrar usuario</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
