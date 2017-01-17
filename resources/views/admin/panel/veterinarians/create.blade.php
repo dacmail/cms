@@ -97,3 +97,7 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede añadir un veterinario a la protectora.</p>
+@stop

@@ -102,3 +102,18 @@
 
     {!! $widgets->appends($request->all())->links() !!}
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de bloques de la protectora.</p>
+    <p>Se pueden ordenar por orden y se pueden filtrar por título, lado, tipo y orden.</p>
+
+    <h4>Permisos</h4>
+    <p>En esta página existen dos tipos de permisos: El voluntario puede editar y eliminar un bloque o solo puede verlo.</p>
+    <p>Si ve estos botones es que tiene acceso a editar y eliminar el bloque.</p>
+    <p>
+        <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+    </p>
+    <p>Sin embargo si solo ve este botón, es que solo tiene permisos para ver el bloque y no para actualizarlo o eliminarlo.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-eye"></i></button></p>
+@stop

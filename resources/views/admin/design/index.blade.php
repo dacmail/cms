@@ -46,6 +46,7 @@
                 <div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
                     <label class="control-label col-md-2">{{ ucfirst(trans('validation.attributes.logo')) }}</label>
                     <div class="col-md-10">
+                        <p class="bg-info">Las dimensiones recomendadas son 400px de ancho por 400px de alto.</p>
                         <a href="{{ route('web::image', ['file' => $web->logo]) }}" target="_blank"><img src="{{ route('web::image', ['file' => $web->logo]) }}" alt="" style="max-width: 100%; max-height: 150px; padding: 15px" class=""></a>
                         <div class="image-editor-logo">
                             <input type="file" class="cropit-image-input">
@@ -63,6 +64,7 @@
                 <div class="form-group {{ $errors->has('header') ? 'has-error' : '' }}">
                     <label class="control-label col-md-2">{{ ucfirst(trans('validation.attributes.header_image')) }}</label>
                     <div class="col-md-10">
+                        <p class="bg-info">Las dimensiones recomendadas son 1200px de ancho por 200px de alto.</p>
                         @if ($web->hasConfig('themes.default.header_image'))
                             <a href="{{ route('web::image', ['file' => $web->getConfig('themes.default.header_image')]) }}" target="_blank"><img src="{{ route('web::image', ['file' => $web->getConfig('themes.default.header_image')]) }}" alt="" style="max-width: 100%; max-height: 150px; padding: 15px" class=""></a>
                         @endif
@@ -258,3 +260,8 @@
     });
 </script>
 @endpush
+
+@section('page.help.text')
+    <p>En esta página se pueden añadir y modificar el diseño general de la página web, como el logo, la cabecera o el favicon.</p>
+    <p class="bg-info">Por favor, respete las dimensiones recomendadas de los archivos para su óptima visualización del mismo en la página web.</p>
+@stop

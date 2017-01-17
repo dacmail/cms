@@ -17,6 +17,11 @@
 @section('content')
 <div class="row changelog">
     <div class="col-md-12">
+    <h4 class="margin-top-40">16-01-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Añadida la ayuda en todas las páginas del panel de administración. Al hacer clic en el botón de <button class="btn btn-primary btn-xs"><i class="fa fa-question-circle"></i> Ayuda</button> aparecerá una ventana con la información de esa página.
+            </li>
+        </ul>
         <h4 class="margin-top-40">11-01-2017</h4>
         <ul>
             <li><span class="label label-info">novedad</span> Modificado el asunto en el formulario de contacto de un animal cuando está perdido o ha sido encontrado.</li>
@@ -90,4 +95,9 @@
         </ul>
     </div>
 </div>
+@stop
+
+@section('page.help.text')
+    <p>Esta página muestra el historial de cambios.</p>
+    <p>Se podrán ver las novedades y corecciones implementadas cada día.</p>
 @stop

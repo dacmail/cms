@@ -148,3 +148,13 @@
         </div>
     </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede editar un artículo de la protectora.</p>
+    <p>También se pueden añadir traducciones haciendo clic en el desplegable llamado "Cambiar traducción".</p>
+    <p class="bg-info">Si modifica el enlace, el artículo no será accesible por el enlace antiguo, por lo tanto si ha compartido el artículo, por ejemplo en redes sociales, se perderá el acceso a este.</p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Fijo en la página principal:</strong><br> Si el artículo está fijo en la página principal, siempre aparecerá primero.</p>
+    <p><strong>Formulario:</strong><br> Inserta un formulario ya generado en el artículo.</p>
+@stop

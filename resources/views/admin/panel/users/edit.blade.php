@@ -356,3 +356,12 @@
     });
 </script>
 @endpush
+
+@section('page.help.text')
+    <p>En esta página se puede editar un usuario en la protectora.</p>
+    <p class="bg-info">Los usuarios de tipo Usuario no tienen permisos de ningún tipo, los voluntarios tienen permisos específicos y los administradores tienen todos los permisos.</p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Estado:</strong><br> Si un usuario está bloqueado o inactivo, no puede acceder al panel ni realizar ninguna acción. Si está pendiente es que aún no ha confirmado su registro.</p>
+    <p><strong>Notificación:</strong><br> Indica si al registrar un usuario, este recibirá un correo electrónico con sus datos de acceso.</p>
+@stop

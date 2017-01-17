@@ -11,6 +11,8 @@
 @stop
 
 @section('content')
+			    <a href="{{route('admin::panel::partners::create')}}" class="btn btn-primary visible-xs-inline-block">Crear socio</a>
+
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
@@ -98,8 +100,12 @@
                         <td colspan="6" class="text-center">
                             @if ($total)
                                 No existen socios con esos parámetros.
-                            @else
-                                <p class="bg-info text-center">Aún no se ha creado ningún socio.</p>
+							@else
+                                <div class="bg-info text-center">
+                                    <p>Aún no se ha creado ningún socio.</p>
+                                    <div class="col-md-offset-5 col-md-2"><a href="{{ route('admin::panel::partners::create') }}" class="btn btn-default btn-block" >Crear socio</a></div>
+                                    <div class="clearfix"></div>
+                                </div>
                             @endif
                         </td>
                     </tr>
@@ -110,4 +116,19 @@
     </form>
 
     {!! $partners->appends($request->all())->links() !!}
+@stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de socios de la protectora.</p>
+    <p>Se pueden ordenar por nombre y correo electrónico y se pueden filtrar por nombre, correo electrónico, donación y cuota.</p>
+
+    <h4>Permisos</h4>
+    <p>En esta página existen dos tipos de permisos: El voluntario puede editar y eliminar un socio o solo puede verlo.</p>
+    <p>Si ve estos botones es que tiene acceso a editar y eliminar el socio.</p>
+    <p>
+        <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+    </p>
+    <p>Sin embargo si solo ve este botón, es que solo tiene permisos para ver el socio y no para actualizarlo o eliminarlo.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-eye"></i></button></p>
 @stop

@@ -66,3 +66,9 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>Esta es la página de contacto.</p>
+    <p>Aquí se pueden enviar mensajes con sugerencias, errores o dudas. Se pueden adjuntar archivos para completar la información del mensaje.</p>
+    <p class="bg-info">Si va a reportar algún error o explicar una sugerencia, por favor, sea lo más detallado posible.</p>
+@stop

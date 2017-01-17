@@ -201,3 +201,10 @@
     });
 </script>
 @endpush
+
+@section('page.help.text')
+    <p>En esta página se puede editar un formulario en la protectora.</p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Campos:</strong><br> Aquí se pueden ir añadiendo, editando y eliminados los distintos campos que tendrá el formulario e indicando si son obligatorios, reordenándolos e indicar su tipo.</p>
+@stop

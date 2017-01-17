@@ -91,3 +91,11 @@
 
     {!! $finances->appends($request->all())->links() !!}
 @stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de las finanzas eliminadas de la protectora.</p>
+    <p>Se pueden ordenar por fecha y cantidad y se pueden filtrar por título, tipo, cantidad, motivo y fecha.</p>
+    <p>Haciendo clic en el siguiente botón se recuperará el registro y aparecerá en el listado de finanzas.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-history"></i></button></p>
+    <p class="bg-info">Los registros que permanezcan más de 30 días eliminados, se eliminarán de forma permanente.</p>
+@stop

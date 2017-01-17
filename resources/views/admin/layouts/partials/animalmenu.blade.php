@@ -35,4 +35,6 @@
     <a href="javascript:;" class="list-group-item hide {{ Request::is('admin/panel/animals/*/notes') ? 'active' : '' }}"><i class="fa fa-file-o"></i> Notas</a>
 
     <a href="javascript:;" class="list-group-item hide {{ Request::is('admin/panel/animals/*/tracking') ? 'active' : '' }}"><i class="fa fa-file-text-o"></i> Apadrinamientos</a>
+
+    <a href="{{ route('web::animals::show', ['id' => $animal->id]) }}" class="list-group-item"><i class="fa fa-link"></i> Ver en la web</a>
 </div>

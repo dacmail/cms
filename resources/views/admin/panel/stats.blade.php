@@ -436,3 +436,13 @@
 
 </script>
 @endpush
+
+@section('page.help.text')
+    <p>En esta página se muestran las estadísticas globales de la protectora.</p>
+    <p><strong>VISITAS Y VISUALIZACIONES:</strong><br> Muestra en un gráfico las visitas (usuarios) y visualizaciones (páginas vistas) del último mes.</p>
+    <p><strong>ESTADÍSTICAS GENERALES:</strong><br> Muestra una tabla con las estadísticas en números de la protectora. Por ej: cuántos animales hay adoptados, cuántos artículos, páginas, formularios, socios, etc.</p>
+    <p><strong>ANIMALES POR ESPECIE:</strong><br> Muestra un gráfico de los animales por especie.</p>
+    <p><strong>ANIMALES POR ESTADO:</strong><br> Muestra un gráfico de los animales por estado.</p>
+    <p><strong>ANIMALES POR GÉNERO:</strong><br> Muestra un gráfico de los animales por género.</p>
+    <p><strong>ANIMALES POR LOCALIZACIÓN:</strong><br> Muestra un gráfico de los animales por localización.</p>
+@endsection

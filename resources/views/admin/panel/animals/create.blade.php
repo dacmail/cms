@@ -52,7 +52,7 @@
                     <div class="form-group {{ $errors->has('visible') ? 'has-error' : '' }}">
                         <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.visible')) }}</label>
                         <div class="col-md-10">
-                            <select name="visible" class="form-control" placeholder="Estado...">
+                            <select name="visible" class="form-control">
                                 @foreach(config('protecms.animals.visible') as $visible)
                                     <option value="{{ $visible }}">{{ trans('animals.visible.' . $visible) }}</option>
                                 @endforeach
@@ -63,7 +63,7 @@
                     <div class="form-group {{ $errors->has('status') ? 'has-error' : '' }}">
                         <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.status')) }}</label>
                         <div class="col-md-10">
-                            <select name="status" class="form-control animal-status" placeholder="Estado...">
+                            <select name="status" class="form-control animal-status">
                                 @foreach(config('protecms.animals.status') as $status)
                                     <option value="{{ $status }}">{{ trans_choice('animals.status.' . $status, 1) }}</option>
                                 @endforeach
@@ -135,7 +135,7 @@
                     <div class="form-group {{ $errors->has('kind') ? 'has-error' : '' }}">
                         <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.kind')) }}</label>
                         <div class="col-md-10">
-                            <select name="kind" class="form-control" placeholder="Estado...">
+                            <select name="kind" class="form-control">
                                 @foreach(config('protecms.animals.kind') as $kind)
 
                                     @if (! Auth::user()->hasPermissions(['admin.panel.animals.' . $kind]))
@@ -151,7 +151,7 @@
                     <div class="form-group {{ $errors->has('gender') ? 'has-error' : '' }}">
                         <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.gender')) }}</label>
                         <div class="col-md-10">
-                            <select name="gender" class="form-control" placeholder="Estado...">
+                            <select name="gender" class="form-control">
                                 @foreach(config('protecms.animals.gender') as $gender)
                                     <option value="{{ $gender }}">{{ trans_choice('animals.gender.' . $gender, 1) }}</option>
                                 @endforeach
@@ -162,7 +162,7 @@
                     <div class="form-group {{ $errors->has('location') ? 'has-error' : '' }}">
                         <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.location')) }}</label>
                         <div class="col-md-10">
-                            <select name="location" class="form-control animal-location" placeholder="Estado...">
+                            <select name="location" class="form-control animal-location">
                                 @foreach(config('protecms.animals.location') as $location)
                                     <option value="{{ $location }}">{{ trans('animals.location.' . $location) }}</option>
                                 @endforeach
@@ -319,4 +319,17 @@
         </div>
     </div>
 </div>
+@stop
+
+@section('page.help.text')
+    <p>En esta página se puede crear la ficha de un animal.</p>
+    <p class="bg-info">Las fotos se podrán añadir una vez se haya creado la ficha.</p>
+    <p>Si habilita las casillas "Fecha aproximada" lo que hace es aproximarse a la fecha. Por ejemplo, si un animal tiene 5 meses y 20 días, solo aparecerá 5 meses. Otro ejemplo, si un animal tiene 1 año y 5 meses, solo aparecerá 1 año.</p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Identificador:</strong><br> Identificador interno que usan algunas protectoras para identificar a sus animales.</p>
+    <p><strong>Camada:</strong><br> Identificador de la camada.</p>
+    <p><strong>Visible en la web:</strong><br> Indica si el animal puede ser visible en la web, ya sea en los listados o su ficha.</p>
+    <p><strong>Salud:</strong><br> Breve resumen de la salud del animal.</p>
+    <p><strong>Texto privado:</strong><br> Este campo puede ser útil para dejar notas del animal internamente. Este campo no es público.</p>
 @stop

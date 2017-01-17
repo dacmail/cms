@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+			    <a href="{{route('admin::panel::veterinarians::create')}}" class="btn btn-primary visible-xs-inline-block">Crear veterinario</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
@@ -85,8 +86,12 @@
                         <td colspan="6">
                             @if ($total)
                                 No existen veterinarios con esos parámetros.
-                            @else
-                                <p class="bg-info text-center">Aún no se han creado veterinarios.</p>
+							@else
+                                <div class="bg-info text-center">
+                                    <p>Aún no se ha creado ningún veterinario.</p>
+                                    <div class="col-md-offset-5 col-md-2"><a href="{{ route('admin::panel::veterinarians::create') }}" class="btn btn-default btn-block" >Crear veterinario</a></div>
+                                    <div class="clearfix"></div>
+                                </div>
                             @endif
                         </td>
                     </tr>
@@ -97,4 +102,19 @@
     </form>
 
     {!! $veterinarians->appends($request->all())->links() !!}
+@stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de veterinarios de la protectora.</p>
+    <p>Se pueden ordenar por nombre, perdona de contacto y correo electrónico y se pueden filtrar por nombre, persona de contacto, correo electrónico, teléfono y estado.</p>
+
+    <h4>Permisos</h4>
+    <p>En esta página existen dos tipos de permisos: El voluntario puede editar y eliminar un veterinario o solo puede verlo.</p>
+    <p>Si ve estos botones es que tiene acceso a editar y eliminar el veterinario.</p>
+    <p>
+        <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+    </p>
+    <p>Sin embargo si solo ve este botón, es que solo tiene permisos para ver el veterinario y no para actualizarlo o eliminarlo.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-eye"></i></button></p>
 @stop

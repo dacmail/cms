@@ -6,11 +6,12 @@
 
 @section('breadcrumb')
     <li>
-        <a href="{{ route('admin::panel::animals::index') }}">Animales</a>
+        <a href="{{ route('admin::panel::animals::create') }}">Animales</a>
     </li>
 @stop
 
 @section('content')
+	    <a href="{{route('admin::panel::animals::create')}}" class="btn btn-primary visible-xs-inline-block">Añadir animales</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
@@ -126,8 +127,12 @@
                         <td colspan="7" class="text-center">
                             @if ($total)
                                 No existen animales con esos parámetros.
-                            @else
-                                <p class="bg-info text-center">Aún no se ha creado la ficha de ningún animal.</p>
+							@else
+                                <div class="bg-info text-center">
+                                    <p>Aún no se ha creado ningún animal.</p>
+                                    <div class="col-md-offset-5 col-md-2"><a href="{{ route('admin::panel::animals::create') }}" class="btn btn-default btn-block" >Añadir animal</a></div>
+                                    <div class="clearfix"></div>
+                                </div>
                             @endif
                         </td>
                     </tr>
@@ -138,4 +143,20 @@
     </form>
 
     {!! $animals->appends($request->all())->links() !!}
+@stop
+
+@section('page.help.text')
+    <p>Esta página muestra el listado de animales de la protectora.</p>
+    <p>Se pueden ordenar por nombre y edad (también a la inversa) y se pueden filtrar por nombre, estado, especie, género y edad.</p>
+
+    <h4>Permisos</h4>
+    <p>En esta página existen dos tipos de permisos: El voluntario puede editar y eliminar una ficha o solo puede verla.</p>
+    <p class="bg-info">Si el voluntario solo tiene acceso a determinadas especies, solo verá estas en el listado, las demás no aparecerán.</p>
+    <p>Si ve estos botones es que tiene acceso a editar y eliminar la ficha del animal.</p>
+    <p>
+        <button class="btn btn-primary"><i class="fa fa-edit"></i></button>
+        <button class="btn btn-danger"><i class="fa fa-trash"></i></button>
+    </p>
+    <p>Sin embargo si solo ve este botón, es que solo tiene permisos para ver la ficha y no para actualizarla o eliminarla.</p>
+    <p><button class="btn btn-primary"><i class="fa fa-eye"></i></button></p>
 @stop

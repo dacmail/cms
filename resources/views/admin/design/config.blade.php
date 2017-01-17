@@ -60,3 +60,8 @@
         </div>
     </div>
 @stop
+
+@section('page.help.text')
+    <p>Aquí se pueden modificar cosas como la cantidad de artículos a mostrar en la página principal o los campos a mostrar en la ficha de los animales.</p>
+    <p class="bg-info">Próximamente se irán añadadiendo más opciones de personalización.</p>
+@stop

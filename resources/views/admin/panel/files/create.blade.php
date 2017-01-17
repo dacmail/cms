@@ -79,3 +79,10 @@
         </div>
     </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede subir un archivo a la protectora.</p>
+
+    <h4>Campos del formulario</h4>
+    <p><strong>Público:</strong><br> Indica si el archivo es accesible por cualquier usuario o solo por voluntarios/administradores.</p>
+@stop

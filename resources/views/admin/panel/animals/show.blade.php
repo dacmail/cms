@@ -166,3 +166,8 @@
     </div>
 </div>
 @stop
+
+@section('page.help.text')
+    <p>En esta página se puede ver la ficha del animal.</p>
+    <p>Actualmente se encuentra en construcción.</p>
+@stop

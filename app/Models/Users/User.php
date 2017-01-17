@@ -119,6 +119,12 @@ class User extends Authenticatable
         return $this;
     }
 
+    /**
+     * Check if user has permission
+     *
+     * @param $permission
+     * @return bool
+     */
     public function hasPermission($permission)
     {
         if ($this->isAdmin()) {
@@ -134,6 +140,12 @@ class User extends Authenticatable
         return false;
     }
 
+    /**
+     * Check if user has permissions
+     *
+     * @param $permissions
+     * @return bool
+     */
     public function hasPermissions($permissions)
     {
         if ($this->isAdmin()) {
@@ -154,12 +166,35 @@ class User extends Authenticatable
         return false;
     }
 
+    /**
+     * Check if user has animals permissions
+     *
+     * @return array
+     */
     public function animalsPermissions()
     {
         $permissions = [];
 
         foreach (config('protecms.animals.kind') as $kind) {
             if ($this->isAdmin() || $this->hasPermissions(['admin.panel.animals.' . $kind, 'admin.panel.animals.' . $kind . '.view'])) {
+                $permissions[] = $kind;
+            }
+        }
+
+        return $permissions;
+    }
+
+    /**
+     * Check if user can create an animals
+     *
+     * @return array
+     */
+    public function canCreateAnimals()
+    {
+        $permissions = [];
+
+        foreach (config('protecms.animals.kind') as $kind) {
+            if ($this->isAdmin() || $this->hasPermissions(['admin.panel.animals.' . $kind])) {
                 $permissions[] = $kind;
             }
         }
