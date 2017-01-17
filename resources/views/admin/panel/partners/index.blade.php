@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-			    <a href="{{route('admin::panel::partners::create')}}" class="btn btn-primary">Crear socio</a>
+			    <a href="{{route('admin::panel::partners::create')}}" class="btn btn-primary visible-xs-inline-block">Crear socio</a>
 
     <form action="" method="GET">
         <div class="pull-right">

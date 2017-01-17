@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-		    <a href="{{route('admin::panel::pages::create')}}" class="btn btn-primary">Crear página</a>
+		    <a href="{{route('admin::panel::pages::create')}}" class="btn btn-primary visible-xs-inline-block">Crear página</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">

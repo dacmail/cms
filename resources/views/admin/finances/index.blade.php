@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-	<a href="{{route('admin::finances::create')}}" class="btn btn-primary">Crear registro</a>
+	<a href="{{route('admin::finances::create')}}" class="btn btn-primary visible-xs-inline-block">Crear registro</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">

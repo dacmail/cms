@@ -11,7 +11,7 @@
 @stop
 
 @section('content')
-	    <a href="{{route('admin::panel::animals::create')}}" class="btn btn-primary">Añadir animales</a>
+	    <a href="{{route('admin::panel::animals::create')}}" class="btn btn-primary visible-xs-inline-block">Añadir animales</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
