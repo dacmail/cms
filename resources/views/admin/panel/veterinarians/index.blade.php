@@ -11,6 +11,7 @@
 @stop
 
 @section('content')
+			    <a href="{{route('admin::panel::veterinarians::create')}}" class="btn btn-primary">Crear veterinario</a>
     <form action="" method="GET">
         <div class="pull-right">
             Ordenar por <select name="sort" class="margin-bottom-20" onchange="this.form.submit()">
@@ -85,8 +86,12 @@
                         <td colspan="6">
                             @if ($total)
                                 No existen veterinarios con esos parámetros.
-                            @else
-                                <p class="bg-info text-center">Aún no se han creado veterinarios.</p>
+							@else
+                                <div class="bg-info text-center">
+                                    <p>Aún no se ha creado ningún veterinario.</p>
+                                    <div class="col-md-offset-5 col-md-2"><a href="{{ route('admin::panel::veterinarians::create') }}" class="btn btn-default btn-block" >Crear veterinario</a></div>
+                                    <div class="clearfix"></div>
+                                </div>
                             @endif
                         </td>
                     </tr>
