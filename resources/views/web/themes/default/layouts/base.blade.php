@@ -20,6 +20,8 @@
 	<meta name="twitter:creator" content="{{ $web->twitter ?: '@ProteCMS' }}">
 	<meta property="og:site_name" content="{{ $web->name }}" />
 
+	@include('partials.favicon')
+
 	@section('meta.share')
 
 		<!-- Schema.org markup for Google+ -->

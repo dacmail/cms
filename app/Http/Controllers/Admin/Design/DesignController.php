@@ -137,6 +137,35 @@ class DesignController extends BaseAdminController
             $this->web->setConfig('themes.default.header_image', $name);
         }
 
+        if ($request->hasFile('favicon') && $request->file('favicon')->isValid()) {
+            $favicon = Image::make($request->file('favicon')->path())->resize(32, 32);
+
+            $mime = $favicon->mime();
+
+            switch ($mime) {
+                case 'image/jpeg':
+                    $extension = 'jpg';
+                    break;
+                case 'image/png':
+                    $extension = 'png';
+                    break;
+                case 'image/gif':
+                    $extension = 'gif';
+                    break;
+                case 'image/x-icon':
+                    $extension = 'ico';
+                    break;
+                default:
+                    $extension = 'png';
+                    break;
+            }
+
+            $name = 'favicon.' . $extension;
+
+            Storage::put('web/' . $this->web->id . '/images/' . $name, $favicon->stream($extension, 100)->__toString(), 'public');
+            $this->web->setConfig('themes.default.favicon', $name);
+        }
+
         $this->web->setConfig('themes.default.color', $request->get('color'));
         $this->web->setConfig('themes.default.border_radius', $request->get('border_radius'));
 

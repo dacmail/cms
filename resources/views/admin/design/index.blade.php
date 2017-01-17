@@ -81,6 +81,20 @@
                         {!! $errors->first('header', '<span class="help-block">:message</span>') !!}
                     </div>
                 </div>
+                <div class="form-group {{ $errors->has('favicon') ? 'has-error' : '' }}">
+                    <label class="control-label col-md-2">{{ ucfirst(trans('validation.attributes.favicon')) }}</label>
+                    <div class="col-md-10">
+                        <p class="bg-info">Las dimensiones recomendadas son 32px de ancho por 32px de alto. Puede generar un favicon haciendo clic <a href="http://www.favicon-generator.org/" target="_blank">aquí.</a></p>
+                        @if ($web->hasConfig('themes.default.favicon'))
+                            <a href="{{ route('web::image', ['file' => $web->getConfig('themes.default.favicon')]) }}" target="_blank"><img src="{{ route('web::image', ['file' => $web->getConfig('themes.default.favicon')]) }}" alt="" style="max-width: 100%; max-height: 150px; padding: 15px" class=""></a>
+                        @endif
+                        <div class="form-control">
+                            <input type="file" name="favicon">
+                        </div>
+                        <div class="help-block">Si no selecciona uno se mantendrá el actual.</div>
+                        {!! $errors->first('header', '<span class="help-block">:message</span>') !!}
+                    </div>
+                </div>
                 <div class="form-actions">
                     <div class="row">
                         <div class="col-md-offset-4 col-md-4">

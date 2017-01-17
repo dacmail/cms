@@ -232,7 +232,8 @@ return [
         'height'                => 'altura',
         'length'                => 'largo',
         'domain'                => 'dominio',
-        'state'                 => 'estado'
+        'state'                 => 'estado',
+        'favicon'               => 'favicon'
     ],
 
 ];
