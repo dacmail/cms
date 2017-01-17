@@ -40,7 +40,11 @@ trait FilterBy
                 if (strstr($request->get($field), ',')) {
                     $collection = $collection->whereIn($field, explode(',', $request->get($field)));
                 } else {
-                    $collection = $collection->where($field, 'LIKE', '%' . $request->get($field) . '%');
+                    if ($field === 'gender') {
+                        $collection = $collection->where($field, '=', $request->get($field));
+                    } else {
+                        $collection = $collection->where($field, 'LIKE', '%' . $request->get($field) . '%');
+                    }
                 }
             }
         }

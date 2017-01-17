@@ -17,7 +17,15 @@
 @section('content')
 <div class="row changelog">
     <div class="col-md-12">
-    <h4 class="margin-top-40">16-01-2017</h4>
+        <h4 class="margin-top-40">17-01-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Ahora se puede subir un favicon en el apartado de diseño.
+            </li>
+            <li><span class="label label-info">novedad</span> Ahora aparecen botones para crear en los listados vacíos. También encima de los listados, solo para móviles y tablets, para que sea más fácil acceder a dichas secciones (gracias a Alberto).
+            </li>
+            <li><span class="label label-warning">corrección</span> Arreglado el error que provocaba que al buscar por macho, apareciésen también las hembras.</li>
+        </ul>
+        <h4 class="margin-top-40">16-01-2017</h4>
         <ul>
             <li><span class="label label-info">novedad</span> Añadida la ayuda en todas las páginas del panel de administración. Al hacer clic en el botón de <button class="btn btn-primary btn-xs"><i class="fa fa-question-circle"></i> Ayuda</button> aparecerá una ventana con la información de esa página.
             </li>
