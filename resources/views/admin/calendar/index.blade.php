@@ -36,7 +36,7 @@
                     <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
                     @if (Auth::user()->hasPermission('admin.calendar'))
                         <a href="#" class="btn btn-danger pull-left confirm delete-event">Eliminar</a>
-                        <a href="#" class="btn btn-info pull-left edit-event">Actualizar</a>
+                        <a href="#" class="btn btn-info pull-left edit-event">Editar</a>
                     @endif
                     <a href="#" class="btn btn-primary go-to-event" target="_blank">Ir al evento</a>
                 </div>
@@ -55,7 +55,7 @@
     <p>
         <button class="btn btn-default">Cerrar</button>
         <button class="btn btn-danger">Eliminar</button>
-        <button class="btn btn-info">Actualizar</button>
+        <button class="btn btn-info">Editar</button>
     </p>
     <p>Sin embargo si solo ve el botón de cerrar, es que solo tiene permisos para ver el evento y no para actualizarlo o eliminarlo.</p>
 

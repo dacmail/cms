@@ -77,10 +77,10 @@ class CalendarController extends BaseAdminController
      */
     public function edit($id)
     {
-        $this->authorize('update', $event);
-
         $event = $this->calendar
             ->findOrFail($id);
+
+        $this->authorize('update', $event);
 
         return view('admin.calendar.edit', compact('event'));
     }
