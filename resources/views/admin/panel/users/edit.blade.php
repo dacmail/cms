@@ -99,6 +99,13 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4">
+                                        <label for="" class="control-label">Datos de la protectora</label>
+                                        <select name="permissions[admin.panel.web]" id="" class="form-control">
+                                            <option value="0">Sin acceso</option>
+                                            <option value="1" {{ $user->hasPermission('admin.panel.web') ? 'selected' : '' }}>Acceso total</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
                                         <label for="" class="control-label">Calendario</label>
                                         <select name="permissions[admin.calendar]" id="" class="form-control">
                                             <option value="0">Sin acceso</option>

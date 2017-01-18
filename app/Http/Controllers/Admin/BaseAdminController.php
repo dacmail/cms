@@ -61,7 +61,7 @@ class BaseAdminController extends Controller
             ],
             [
                 'title' => 'Protectora',
-                'permissions' => ['admin'],
+                'permissions' => ['admin.panel.web'],
                 'menu' => [
                     'title' => 'Protectora',
                     'icon' => 'fa fa-file-text-o',
