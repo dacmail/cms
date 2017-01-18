@@ -10,32 +10,38 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="table-scrollable">
-                    <table class="table table-center table-striped table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Estado</th>
-                            <th>Especie</th>
-                            <th>Género</th>
-                            <th>Acciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($animals as $animal)
-                                <tr>
-                                    <td>{{ $animal->name }}</td>
-                                    <td>{{ trans_choice('animals.status.' . $animal->status, 1) }}</td>
-                                    <td>{{ trans_choice('animals.kind.' . $animal->kind, 1) }}</td>
-                                    <td>{{ trans_choice('animals.gender.' . $animal->gender, 1) }}</td>
-                                    <td class="table-actions-single">
-                                        <a href="{{ route('admin::panel::animals::edit', ['id' => $animal->id]) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                @if (Auth::user()->hasPermission('admin.panel.animals'))
+                    <div class="table-scrollable">
+                        <table class="table table-center table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Estado</th>
+                                <th>Especie</th>
+                                <th>Género</th>
+                                <th>Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($animals as $animal)
+                                    <tr>
+                                        <td>{{ $animal->name }}</td>
+                                        <td>{{ trans_choice('animals.status.' . $animal->status, 1) }}</td>
+                                        <td>{{ trans_choice('animals.kind.' . $animal->kind, 1) }}</td>
+                                        <td>{{ trans_choice('animals.gender.' . $animal->gender, 1) }}</td>
+                                        <td class="table-actions-single">
+                                            <a href="{{ route('admin::panel::animals::edit', ['id' => $animal->id]) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <div class="alert alert-info text-center">
+                        No tienes permisos para ver esta sección.
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -65,28 +71,34 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="table-scrollable">
-                    <table class="table table-center table-striped table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>Título</th>
-                            <th>Categoría</th>
-                            <th>Acciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($posts as $post)
-                                <tr>
-                                    <td class="text-left">{{ str_limit($post->title, 80, '...') }}</td>
-                                    <td>{{ $post->category->title }}</td>
-                                    <td class="table-actions-single">
-                                        <a href="{{ route('admin::panel::posts::edit', ['id' => $post->id]) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                @if (Auth::user()->hasPermissions(['admin.panel.posts', 'admin.panel.posts.view', 'admin.panel.posts.crud']))
+                    <div class="table-scrollable">
+                        <table class="table table-center table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Categoría</th>
+                                <th>Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($posts as $post)
+                                    <tr>
+                                        <td class="text-left">{{ str_limit($post->title, 80, '...') }}</td>
+                                        <td>{{ $post->category->title }}</td>
+                                        <td class="table-actions-single">
+                                            <a href="{{ route('admin::panel::posts::edit', ['id' => $post->id]) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <div class="alert alert-info text-center">
+                        No tienes permisos para ver esta sección.
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -98,28 +110,34 @@
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="table-scrollable">
-                    <table class="table table-center table-striped table-bordered table-hover">
-                        <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Correo electrónico</th>
-                            <th>Acciones</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($users as $user)
+                @if (Auth::user()->hasPermissions(['admin.panel.users', 'admin.panel.users.view']))
+                    <div class="table-scrollable">
+                        <table class="table table-center table-striped table-bordered table-hover">
+                            <thead>
                             <tr>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
-                                <td class="table-actions-single">
-                                    <a href="{{ route('admin::panel::users::edit', ['id' => $user->id]) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i></a>
-                                </td>
+                                <th>Nombre</th>
+                                <th>Correo electrónico</th>
+                                <th>Acciones</th>
                             </tr>
-                        @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td class="table-actions-single">
+                                        <a href="{{ route('admin::panel::users::edit', ['id' => $user->id]) }}" class="btn btn-primary btn-block"><i class="fa fa-edit"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <div class="alert alert-info text-center">
+                        No tienes permisos para ver esta sección.
+                    </div>
+                @endif
             </div>
         </div>
     </div>
