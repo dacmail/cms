@@ -8,6 +8,9 @@
 
 	<link rel="stylesheet" type="text/css" href="{{ elixir('themes/default/css/app.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ elixir('themes/default/css/default.css') }}">
+	@if (!$web->getConfig('themes.default.border_radius'))
+		<link rel="stylesheet" type="text/css" href="{{ elixir('themes/default/css/bradius.css') }}">
+	@endif
 	<?php include_once(public_path(Theme::url('css/default.php'))); ?>
 
 	@if ($web->hasConfig('themes.default.css'))
