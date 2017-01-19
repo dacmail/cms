@@ -8,7 +8,8 @@ Homestead.json
 .DS_Store
 /public/assets
 /public/themes
-/storage
+/storage/debugbar
+/storage/app
 /public/uploads
 /public/build
 /resources/views/vendor
