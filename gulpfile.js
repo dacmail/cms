@@ -92,6 +92,7 @@ elixir.extend('themesDefault', function (mix) {
     ], 'public/themes/default/js/app.js')
 
     mix.copy('resources/assets/themes/default/images', 'public/themes/default/images')
+    mix.copy('resources/assets/themes/default/css/bradius.css', 'public/themes/default/css/bradius.css')
     mix.copy('resources/assets/themes/default/css/default.php', 'public/themes/default/css/default.php')
 })
 
