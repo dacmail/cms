@@ -10,6 +10,22 @@ $(document).ready(function() {
         $('html').toggleClass('widgets-open');
     });
 
+    // Go top
+    var duration = 500;
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 220) {
+            $('.back-to-top').fadeIn(duration);
+        } else {
+            $('.back-to-top').fadeOut(duration);
+        }
+    });
+         
+    $('.back-to-top').click(function(event) {
+        event.preventDefault();
+        $('html, body').animate({scrollTop: 0}, duration);
+        return false;
+    });
+
     // Magnific Popup
     $.extend(true, $.magnificPopup.defaults, {
         tClose: 'Cerrar (Esc)', // Alt text on close button

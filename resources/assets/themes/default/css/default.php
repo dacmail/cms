@@ -26,4 +26,13 @@ $color = $web->getConfig('themes.default.color');
         background-color: darken(<?php echo $color; ?>;, 5)
         border-color: darken(<?php echo $color; ?>;, 5)
     }
+ 
+    .back-to-top {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        color: #333;
+        display: none;
+        font-size: 2em;
+    }
 </style>

@@ -181,6 +181,8 @@
 	</div>
 	@endif
 
+	<a href="#" class="back-to-top"><i class="fa fa-arrow-circle-up"></i></a>
+
 	<div class="footer container text-center">
 		Copyright &copy; {{ $web->name }} - {{ date('Y') }} · Página web por <a href="http://protecms.com">ProteCMS</a>.<br>
 		<a href="{{ route('admin::panel::index') }}">Acceder al Panel de administración</a>

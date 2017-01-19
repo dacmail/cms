@@ -17,6 +17,12 @@
 @section('content')
 <div class="row changelog">
     <div class="col-md-12">
+        <h4 class="margin-top-40">19-01-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Añadido el botón de volver arriba en la página web.
+            </li>
+            <li><span class="label label-warning">corrección</span> Corregido un error que provocaba que no se pudiesen crear artículos, páginas, etc, con emojis.</li>
+        </ul>
         <h4 class="margin-top-40">18-01-2017</h4>
         <ul>
             <li><span class="label label-warning">corrección</span> Corregido un error que provocaba que no se pudiesen editar eventos del calendario.</li>
