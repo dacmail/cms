@@ -31,7 +31,7 @@ trait FilterByWeb
         if (Schema::hasColumn(self::getTableName(), 'web_id')
             && ! in_array(self::getTableName(), self::$excludedTables)) {
 
-            if (! app()->runningInConsole()) {
+            if (! app()->runningInConsole() || app()->environment() === 'testing') {
                 static::creating(function ($model) {
                     $model->web_id = app('App\Models\Webs\Web')->id;
                 });
