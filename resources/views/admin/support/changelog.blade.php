@@ -17,6 +17,11 @@
 @section('content')
 <div class="row changelog">
     <div class="col-md-12">
+        <h4 class="margin-top-40">20-01-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Añadido el sistema de notificaciones.
+            </li>
+        </ul>
         <h4 class="margin-top-40">19-01-2017</h4>
         <ul>
             <li><span class="label label-info">novedad</span> Añadido el botón de volver arriba en la página web.
