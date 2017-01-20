@@ -60,7 +60,7 @@ class WebsController extends SuperAdminController
         $install_code = mt_rand(00000, 99999);
         $web->setConfig('install_code', $install_code);
 
-        Mail::to($web->email)->send(new WebCreated($web, $install_code));
+        Mail::to($web->email)->cc(['email' => config('mail.from.address')])->send(new WebCreated($web, $install_code));
 
         flash('Protectora creada correctamente');
 
