@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Panel\Users;
 
+use Auth;
 use App\Models\Users\User;
 use Illuminate\Http\Request;
 use App\Mail\UserRegistered;
 use App\Helpers\Traits\FilterBy;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Admin\BaseAdminController;
-use App\Http\Requests\Users\StoreRequest;
-use App\Http\Requests\Users\UpdateRequest;
+use App\Http\Requests\Users\{StoreRequest, UpdateRequest};
 
 class UsersController extends BaseAdminController
 {
@@ -161,5 +161,14 @@ class UsersController extends BaseAdminController
         flash('El usuario se ha eliminado correctamente.');
 
         return redirect()->route('admin::panel::users::index');
+    }
+
+    public function read_notifications()
+    {
+        Auth::user()->unreadNotifications->markAsRead();
+
+        return response()->json([
+            'status' => 'success'
+        ]);
     }
 }

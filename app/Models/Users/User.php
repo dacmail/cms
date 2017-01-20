@@ -7,11 +7,12 @@ use App\Helpers\Traits\FilterByWeb;
 use App\Helpers\Traits\LogsActivity;
 use App\Models\Posts\PostTranslation;
 use App\Models\Pages\PageTranslation;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use LogsActivity, FilterByWeb;
+    use LogsActivity, FilterByWeb, Notifiable;
 
     /**
      * Table name
@@ -51,7 +52,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $with = [
-        'permissions'
+        'permissions', 'notifications'
     ];
 
     /**
