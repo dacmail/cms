@@ -5,7 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use Notification;
 use Carbon\Carbon;
 use App\Models\Webs\Web;
-use App\Models\Users\User;
+
 use Illuminate\Http\Request;
 use Spatie\Analytics\Period;
 use App\Notifications\NewUpdate;
@@ -17,12 +17,11 @@ class SuperAdminController extends BaseAdminController
     /**
      * SuperAdminController constructor.
      */
-    public function __construct(User $user)
+    public function __construct()
     {
         parent::__construct();
 
         $this->web = app('App\Models\Webs\Web');
-        $this->user = $user;
     }
 
     /**
@@ -48,9 +47,7 @@ class SuperAdminController extends BaseAdminController
      */
     public function notifications_send(Request $request)
     {
-        $users = $this->user->get();
-
-        Notification::send($users, new NewUpdate([
+        Notification::send(User::get(), new NewUpdate([
             'text' => $request->get('text'),
             'link' => $request->get('link')
         ]));
