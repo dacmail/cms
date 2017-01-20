@@ -1,5 +1,5 @@
 <!-- BEGIN MEGA MENU -->
-<div class="hor-menu hor-menu-light hidden-xs">
+<div class="hor-menu hor-menu-light hidden-xs hidden-sm">
     <ul class="nav navbar-nav">
         <li class="mega-menu-dropdown {{ Request::is('admin/panel*') ? 'active' : '' }}">
             <a href="{{ route('admin::panel::index') }}" class="dropdown-toggle"> Panel</a>

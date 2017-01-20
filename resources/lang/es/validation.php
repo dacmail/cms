@@ -233,7 +233,8 @@ return [
         'length'                => 'largo',
         'domain'                => 'dominio',
         'state'                 => 'estado',
-        'favicon'               => 'favicon'
+        'favicon'               => 'favicon',
+        'link'                  => 'enlace'
     ],
 
 ];
