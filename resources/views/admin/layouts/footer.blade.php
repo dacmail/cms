@@ -25,6 +25,20 @@
             $('body').removeClass('noscroll');
         }
     });
+
+    /**
+     * Notifications
+     */
+    $('#header_notification_bar > a').on('click', function() {
+        if (parseInt($(this).data('notifications')) > 0) {
+            $.post('{{ route('admin::panel::users::read_notifications') }}', {
+                _token: '{{ csrf_token() }}'
+            }).success(function() {
+                $('#header_notification_bar > a').data('notifications', 0);
+                $('#header_notification_bar .badge.badge-default').fadeOut();
+            });
+        }
+    });
 </script>
 
 @stack('scripts')

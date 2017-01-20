@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\SuperAdmin;
 
-use App\Models\Webs\Web;
+use Notification;
 use Carbon\Carbon;
+use App\Models\Webs\Web;
+use App\Models\Users\User;
 use Illuminate\Http\Request;
 use Spatie\Analytics\Period;
+use App\Notifications\NewUpdate;
 use Spatie\Analytics\AnalyticsFacade as Analytics;
 use App\Http\Controllers\Admin\BaseAdminController;
 
@@ -14,11 +17,12 @@ class SuperAdminController extends BaseAdminController
     /**
      * SuperAdminController constructor.
      */
-    public function __construct()
+    public function __construct(User $user)
     {
         parent::__construct();
 
         $this->web = app('App\Models\Webs\Web');
+        $this->user = $user;
     }
 
     /**
@@ -28,6 +32,31 @@ class SuperAdminController extends BaseAdminController
     public function index(Request $request)
     {
         return view('superadmin.index');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function notifications()
+    {
+        return view('superadmin.notifications');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function notifications_send(Request $request)
+    {
+        $users = $this->user->get();
+
+        Notification::send($users, new NewUpdate([
+            'text' => $request->get('text'),
+            'link' => $request->get('link')
+        ]));
+
+        flash('Notificación enviada correctamente');
+        return redirect()->back();
     }
 
     /**
@@ -95,6 +124,11 @@ class SuperAdminController extends BaseAdminController
                             'title' => 'Escritorio',
                             'icon' => 'fa fa-home',
                             'url' => route('superadmin::index'),
+                        ],
+                        [
+                            'title' => 'Notificaciones',
+                            'icon' => 'fa fa-bell',
+                            'url' => route('superadmin::notifications'),
                         ]
                     ]
                 ]

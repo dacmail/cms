@@ -15,6 +15,7 @@ Route::group(['prefix' => 'panel',  'as' => 'panel::', 'namespace' => 'Panel', '
         Route::get('/{id}/edit', ['as' => 'edit', 'uses' => 'UsersController@edit']);
         Route::put('/{id}', ['as' => 'update', 'uses' => 'UsersController@update']);
         Route::post('/', ['as' => 'store', 'uses' => 'UsersController@store']);
+        Route::post('/notifications/read', ['as' => 'read_notifications', 'uses' => 'UsersController@read_notifications']);
         Route::get('/{id}/delete', ['as' => 'delete', 'uses' => 'UsersController@delete']);
         Route::get('/{id}', ['as' => 'show', 'uses' => 'UsersController@show']);
     });

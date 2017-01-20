@@ -3,32 +3,42 @@
     <ul class="nav navbar-nav pull-right">
         <!-- BEGIN NOTIFICATION DROPDOWN -->
         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-        {{-- <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
-            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+        <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-notifications={{ Auth::user()->unreadNotifications->count() }}>
                 <i class="fa fa-bell-o"></i>
-                <span class="badge badge-default"> 7 </span>
+                <span class="badge badge-default {{ Auth::user()->unreadNotifications->count() ? '' : 'hide' }}"> {{ Auth::user()->unreadNotifications->count() }} </span>
             </a>
             <ul class="dropdown-menu">
-                <li class="external">
+{{--                 <li class="external">
                     <h3>
                         <span class="bold">12 pending</span> notifications</h3>
                     <a href="page_user_profile_1.html">view all</a>
-                </li>
+                </li> --}}
                 <li>
                     <ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
-                        <li>
-                            <a href="javascript:;">
-                                <span class="time">just now</span>
-                                <span class="details">
-                                    <span class="label label-sm label-icon label-success">
-                                        <i class="fa fa-plus"></i>
-                                    </span> New user registered. </span>
-                            </a>
-                        </li>
+                        @if (Auth::user()->notifications->count())
+                            @foreach (Auth::user()->notifications as $notification)
+                            <li>
+                                <a href="{{ $notification->data['link'] }}">
+                                    <span class="details">
+                                        {{ $notification->data['text'] }}
+                                    </span>
+                                    <span class="time" style="margin-top: 5px">{{ $notification->created_at->diffForHumans() }}</span>
+                                    <span class="clearfix"></span>
+                                </a>
+                            </li>
+                            @endforeach
+                        @else
+                            <li>
+                                <a href="#" class="bg-info">
+                                    Aún no has recibido notificaciones.
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </li>
             </ul>
-        </li> --}}
+        </li>
         <!-- END NOTIFICATION DROPDOWN -->
         <!-- BEGIN TODO DROPDOWN -->
         <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
