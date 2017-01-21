@@ -56,13 +56,13 @@
                         </select>
                         <div class="background-color {{ $web->getConfig('themes.default.background_type') == 'background_color' ? '' : 'hide' }}">
                             <p class="margin-top-20">Seleccione un color para el fondo</p>
-                            <input type="text" name="background_color[background_color]" value="{{ $web->getConfig('themes.default.background_color') }}" class="form-control colorpicker">
+                            <input type="text" name="background_color[background_color]" value="{{ $web->hasConfig('themes.default.background_color') ? $web->getConfig('themes.default.background_color') : '#efefef' }}" class="form-control colorpicker">
                         </div>
                         <div class="background-content-color {{ $web->getConfig('themes.default.background_type') == 'background_content_color' ? '' : 'hide' }}">
                             <p class="margin-top-20">Seleccione un color para el fondo</p>
-                            <input type="text" name="background_content_color[background_color]" value="{{ $web->getConfig('themes.default.background_color') }}" class="form-control colorpicker">
+                            <input type="text" name="background_content_color[background_color]" value="{{ $web->hasConfig('themes.default.background_color') ? $web->getConfig('themes.default.background_color') : '#efefef' }}" class="form-control colorpicker">
                             <p class="margin-top-20">Seleccione un color para el contenido</p>
-                            <input type="text" name="background_content_color[background_content_color]" value="{{ $web->getConfig('themes.default.background_content_color') }}" class="form-control colorpicker">
+                            <input type="text" name="background_content_color[background_content_color]" value="{{ $web->hasConfig('themes.default.background_content_color') ? $web->getConfig('themes.default.background_content_color') : '#ffffff' }}" class="form-control colorpicker">
                         </div>
                         <div class="background-image {{ $web->getConfig('themes.default.background_type') == 'background_image' ? '' : 'hide' }}">
                             <div class="background-preview">
@@ -86,7 +86,7 @@
                                 @endforeach
                             </select>
                             <p class="margin-top-20">Seleccione un color para el contenido</p>
-                            <input type="text" name="background_image_content[background_content_color]" value="{{ $web->getConfig('themes.default.background_content_color') }}" class="form-control colorpicker">
+                            <input type="text" name="background_image_content[background_content_color]" value="{{ $web->hasConfig('themes.default.background_content_color') ? $web->getConfig('themes.default.background_content_color') : '#ffffff' }}" class="form-control colorpicker">
                         </div>
                         {!! $errors->first('background_image', '<span class="help-block">:message</span>') !!}
                     </div>
