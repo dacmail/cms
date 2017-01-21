@@ -24,7 +24,10 @@ class DesignController extends BaseAdminController
      */
     public function index()
     {
-        return view('admin.design.index');
+        chdir(public_path('assets/images/backgrounds'));
+        $backgrounds = glob('*.png');
+
+        return view('admin.design.index', compact('backgrounds'));
     }
 
     /**
@@ -168,6 +171,43 @@ class DesignController extends BaseAdminController
 
         $this->web->setConfig('themes.default.color', $request->get('color'));
         $this->web->setConfig('themes.default.border_radius', $request->get('border_radius'));
+
+        switch ($request->get('select_background')) {
+            case 'background-color':
+                $this->web->setConfig('themes.default.background_type', 'background_color');
+                $this->web->setConfig('themes.default.background_color', $request->get('background_color')['background_color']);
+                $this->web->unsetConfig('themes.default.background_image');
+                $this->web->unsetConfig('themes.default.background_content_color');
+                break;
+
+            case 'background-content-color':
+                $this->web->setConfig('themes.default.background_type', 'background_content_color');
+                $this->web->setConfig('themes.default.background_color', $request->get('background_content_color')['background_color']);
+                $this->web->setConfig('themes.default.background_content_color', $request->get('background_content_color')['background_content_color']);
+                $this->web->unsetConfig('themes.default.background_image');
+                break;
+
+            case 'background-image':
+                $this->web->setConfig('themes.default.background_type', 'background_image');
+                $this->web->setConfig('themes.default.background_image', $request->get('background_image')['background_image']);
+                $this->web->unsetConfig('themes.default.background_color');
+                $this->web->unsetConfig('themes.default.background_content_color');
+                break;
+
+            case 'background-image-content':
+                $this->web->setConfig('themes.default.background_type', 'background_image_content');
+                $this->web->setConfig('themes.default.background_image', $request->get('background_image_content')['background_image']);
+                $this->web->setConfig('themes.default.background_content_color', $request->get('background_image_content')['background_content_color']);
+                $this->web->unsetConfig('themes.default.background_color');
+                break;
+            
+            default:
+                $this->web->unsetConfig('themes.default.background_type');
+                $this->web->unsetConfig('themes.default.background_color');
+                $this->web->unsetConfig('themes.default.background_image');
+                $this->web->unsetConfig('themes.default.background_content_color');
+                break;
+        }
 
         flash('Diseño actualizado correctamente');
 

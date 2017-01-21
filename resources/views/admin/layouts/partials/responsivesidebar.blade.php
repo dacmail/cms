@@ -1,7 +1,7 @@
 <div class="page-sidebar-wrapper">
     <ul class="responsive-megamenu visible-sm visible-xs">
         <li><a href="{{ route('admin::panel::index') }}" class="btn btn-primary">Panel</a></li>
-        <li><a href="{{ route('admin::design::index') }}" class="btn btn-primary">Diseño</a></li>
+        <li><a href="{{ route('admin::design::index') }}" class="btn btn-primary">Página web</a></li>
         <li><a href="{{ route('admin::calendar::index') }}" class="btn btn-primary">Calendario</a></li>
         <li><a href="{{ route('admin::finances::index') }}" class="btn btn-primary">Finanzas</a></li>
         <li><a href="{{ route('admin::support::index') }}" class="btn btn-primary">Soporte</a></li>

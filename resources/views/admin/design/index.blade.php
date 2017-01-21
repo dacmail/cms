@@ -37,10 +37,58 @@
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('color') ? 'has-error' : '' }}">
-                    <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.color')) }}</label>
+                    <label class="control-label col-md-2">* {{ ucfirst(trans('validation.attributes.color')) }} principal</label>
                     <div class="col-md-10">
                         <input type="text" name="color" value="{{ $web->getConfig('themes.default.color') }}" class="form-control colorpicker" required>
                         {!! $errors->first('color', '<span class="help-block">:message</span>') !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">* Fondo</label>
+                    <div class="col-md-10">
+                        <p class="bg-info text-center">La mejor combinación es la de imagen de fondo y el color del contenido en blanco.</p>
+                        <select name="select_background" class="form-control">
+                            <option value="">Por defecto</option>
+                            <option value="background-color" {{ $web->getConfig('themes.default.background_type') == 'background_color' ? 'selected' : '' }}>Color del fondo</option>
+                            <option value="background-content-color" {{ $web->getConfig('themes.default.background_type') == 'background_content_color' ? 'selected' : '' }}>Color del fondo y del contenido</option>
+                            <option value="background-image" {{ $web->getConfig('themes.default.background_type') == 'background_image' ? 'selected' : '' }}>Imagen de fondo</option>
+                            <option value="background-image-content" {{ $web->getConfig('themes.default.background_type') == 'background_image_content' ? 'selected' : '' }}>Imagen de fondo y color del contenido</option>
+                        </select>
+                        <div class="background-color {{ $web->getConfig('themes.default.background_type') == 'background_color' ? '' : 'hide' }}">
+                            <p class="margin-top-20">Seleccione un color para el fondo</p>
+                            <input type="text" name="background_color[background_color]" value="{{ $web->getConfig('themes.default.background_color') }}" class="form-control colorpicker">
+                        </div>
+                        <div class="background-content-color {{ $web->getConfig('themes.default.background_type') == 'background_content_color' ? '' : 'hide' }}">
+                            <p class="margin-top-20">Seleccione un color para el fondo</p>
+                            <input type="text" name="background_content_color[background_color]" value="{{ $web->getConfig('themes.default.background_color') }}" class="form-control colorpicker">
+                            <p class="margin-top-20">Seleccione un color para el contenido</p>
+                            <input type="text" name="background_content_color[background_content_color]" value="{{ $web->getConfig('themes.default.background_content_color') }}" class="form-control colorpicker">
+                        </div>
+                        <div class="background-image {{ $web->getConfig('themes.default.background_type') == 'background_image' ? '' : 'hide' }}">
+                            <div class="background-preview">
+                                <a href="{{ $web->hasConfig('themes.default.background_image') ? '/assets/images/backgrounds/' . $web->getConfig('themes.default.background_image') : '/assets/images/backgrounds/' . $backgrounds[0] }}" class="lightbox-image"><img src="{{ $web->hasConfig('themes.default.background_image') ? '/assets/images/backgrounds/' . $web->getConfig('themes.default.background_image') : '/assets/images/backgrounds/' . $backgrounds[0] }}" alt="" width="100px" height="100px" style="margin: 20px"></a>
+                            </div>
+                            <p class="margin-top-20">Seleccione un fondo</p>
+                            <select class="form-control" name="background_image[background_image]">
+                                @foreach($backgrounds as $background)
+                                    <option value="{{ $background }}" {{ $web->getConfig('themes.default.background_image') == $background ? 'selected' : '' }}>{{ $background }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="background-image-content {{ $web->getConfig('themes.default.background_type') == 'background_image_content' ? '' : 'hide' }}">
+                            <div class="background-preview">
+                                <a href="{{ $web->hasConfig('themes.default.background_image') ? '/assets/images/backgrounds/' . $web->getConfig('themes.default.background_image') : '/assets/images/backgrounds/' . $backgrounds[0] }}" class="lightbox-image"><img src="{{ $web->hasConfig('themes.default.background_image') ? '/assets/images/backgrounds/' . $web->getConfig('themes.default.background_image') : '/assets/images/backgrounds/' . $backgrounds[0] }}" alt="" width="100px" height="100px" style="margin: 20px"></a>
+                            </div>
+                            <p class="margin-top-20">Seleccione un fondo</p>
+                            <select class="form-control" name="background_image_content[background_image]">
+                                @foreach($backgrounds as $background)
+                                    <option value="{{ $background }}" {{ $web->getConfig('themes.default.background_image') == $background ? 'selected' : '' }}>{{ $background }}</option>
+                                @endforeach
+                            </select>
+                            <p class="margin-top-20">Seleccione un color para el contenido</p>
+                            <input type="text" name="background_image_content[background_content_color]" value="{{ $web->getConfig('themes.default.background_content_color') }}" class="form-control colorpicker">
+                        </div>
+                        {!! $errors->first('background_image', '<span class="help-block">:message</span>') !!}
                     </div>
                 </div>
                 <div class="form-group {{ $errors->has('logo') ? 'has-error' : '' }}">
@@ -157,6 +205,27 @@
 
 @push('scripts')
 <script>
+    /**
+     * Backgrounds
+     */
+    $('select[name="select_background"]').on('change', function() {
+        console.log($(this).find(':selected').val());
+        $('.background-color').addClass('hide');
+        $('.background-content-color').addClass('hide');
+        $('.background-image').addClass('hide');
+        $('.background-image-content').addClass('hide');
+        $('.' + $(this).find(':selected').val()).removeClass('hide');
+    });
+
+    // Background preview
+    $('select[name="background_image[background_image]"], select[name="background_image_content[background_image]"]').on('change', function() {
+        $('.background-preview img').attr('src', '/assets/images/backgrounds/' + $(this).find(':selected').text());
+        $('.background-preview a').attr('href', '/assets/images/backgrounds/' + $(this).find(':selected').text());
+    });
+
+    /**
+     * Image resize
+     */
     $('.image-editor-logo').cropit({
         smallImage: 'allow',
         freeMove: true,

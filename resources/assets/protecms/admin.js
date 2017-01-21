@@ -144,6 +144,8 @@ $(document).ready(function() {
         }
     });
 
+    $('.lightbox-image').magnificPopup({type:'image'});
+
     $('.datetimerange').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
     });

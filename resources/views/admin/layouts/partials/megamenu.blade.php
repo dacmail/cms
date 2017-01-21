@@ -5,7 +5,7 @@
             <a href="{{ route('admin::panel::index') }}" class="dropdown-toggle"> Panel</a>
         </li>
         <li class="mega-menu-dropdown {{ Request::is('admin/design*') ? 'active' : '' }} {{ ! Auth::user()->hasPermissions(['admin.design', 'admin.design.view']) ? 'hide' : '' }}">
-            <a href="{{ route('admin::design::index') }}" class="dropdown-toggle"> Diseño</a>
+            <a href="{{ route('admin::design::index') }}" class="dropdown-toggle"> Página web</a>
         </li>
         <li class="mega-menu-dropdown {{ Request::is('admin/calendar*') ? 'active' : '' }} {{ ! Auth::user()->hasPermissions(['admin.calendar', 'admin.calendar.view']) ? 'hide' : '' }}">
             <a href="{{ route('admin::calendar::index') }}?type=all" class="dropdown-toggle"> Calendario</a>

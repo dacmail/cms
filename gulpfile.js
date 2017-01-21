@@ -26,7 +26,8 @@ elixir.extend('admin', function (mix) {
         './resources/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css',
         './resources/assets/plugins/cropper/cropper.min.css',
         './resources/assets/plugins/animate.css',
-        './resources/assets/plugins/bootstrap-daterangepicker/daterangepicker.css'
+        './resources/assets/plugins/bootstrap-daterangepicker/daterangepicker.css',
+        './resources/assets/plugins/magnific-popup/magnific-popup.css',
     ], 'public/assets/admin/css/admin-plugins.css')
 
     mix.scripts([
@@ -52,6 +53,7 @@ elixir.extend('admin', function (mix) {
         './resources/assets/plugins/select2/js/i18n/es.js',
         './resources/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
         './resources/assets/plugins/jquery.cropit.js',
+        './resources/assets/plugins/magnific-popup/jquery.magnific-popup.js',
         './resources/assets/plugins/metronic/app.min.js',
         './resources/assets/plugins/metronic/layout.min.js',
         './resources/assets/protecms/admin.js'
