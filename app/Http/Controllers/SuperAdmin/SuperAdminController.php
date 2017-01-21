@@ -5,7 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use Notification;
 use Carbon\Carbon;
 use App\Models\Webs\Web;
-
+use App\Models\Users\User;
 use Illuminate\Http\Request;
 use Spatie\Analytics\Period;
 use App\Notifications\NewUpdate;
