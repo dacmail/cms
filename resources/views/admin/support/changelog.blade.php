@@ -17,6 +17,11 @@
 @section('content')
 <div class="row changelog">
     <div class="col-md-12">
+        <h4 class="margin-top-40">21-01-2017</h4>
+        <ul>
+            <li><span class="label label-info">novedad</span> Añadida la personalización del color y/o imagen de fondo de la página web en el apartado Página web.</li>
+            <li><span class="label label-info">novedad</span> Cambiado el nombre del enlace del menú superior, antes Diseño, ahora Página web.</li>
+        </ul>
         <h4 class="margin-top-40">20-01-2017</h4>
         <ul>
             <li><span class="label label-info">novedad</span> Añadido el sistema de notificaciones.
