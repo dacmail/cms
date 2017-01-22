@@ -26,6 +26,8 @@ class WidgetsController extends BaseAdminController
      */
     public function index(Request $request)
     {
+        $this->customAuthorize('admin.design');
+        
         $total = $this->web->widgets()->count();
         $widgets = $this->filterBy($this->web->widgets(), $request, ['translations.title', 'side', 'type', 'order'])
             ->orderBy('side')
@@ -41,6 +43,8 @@ class WidgetsController extends BaseAdminController
      */
     public function deleted(Request $request)
     {
+        $this->customAuthorize('admin.design');
+        
         $total = $this->web->widgets()->onlyTrashed()->count();
         $widgets = $this->filterBy($this->web->widgets()->onlyTrashed(), $request, ['translations.title', 'side', 'type', 'order'])
             ->orderBy('side')
@@ -55,6 +59,8 @@ class WidgetsController extends BaseAdminController
      */
     public function create()
     {
+        $this->customAuthorize('admin.design');
+        
         return view('admin.design.widgets.create');
     }
 
@@ -64,6 +70,8 @@ class WidgetsController extends BaseAdminController
      */
     public function store(StoreRequest $request)
     {
+        $this->customAuthorize('admin.design');
+        
         $widget = $this->web->widgets()
             ->create($request->all());
 
@@ -94,6 +102,8 @@ class WidgetsController extends BaseAdminController
      */
     public function edit($id)
     {
+        $this->customAuthorize('admin.design');
+        
         $widget = $this->web->widgets()
             ->findOrFail($id);
 
@@ -107,6 +117,8 @@ class WidgetsController extends BaseAdminController
      */
     public function update(UpdateRequest $request, $id)
     {
+        $this->customAuthorize('admin.design');
+        
         $widget = $this->web->widgets()->findOrFail($id);
 
         if ($request->get('type') === 'menu') {
@@ -164,6 +176,8 @@ class WidgetsController extends BaseAdminController
      */
     public function restore($id)
     {
+        $this->customAuthorize('admin.design');
+        
         $this->web->widgets()
             ->withTrashed()
             ->where('id', $id)->firstOrFail()
@@ -181,6 +195,8 @@ class WidgetsController extends BaseAdminController
      */
     public function delete($id)
     {
+        $this->customAuthorize('admin.design');
+        
         $this->web->widgets()
             ->withTrashed()
             ->where('id', $id)
@@ -199,6 +215,8 @@ class WidgetsController extends BaseAdminController
      */
     public function delete_translation(Request $request, $id)
     {
+        $this->customAuthorize('admin.design');
+        
         $this->web->widgets()
             ->findOrFail($id)
             ->deleteTranslations($request->get('langform'));

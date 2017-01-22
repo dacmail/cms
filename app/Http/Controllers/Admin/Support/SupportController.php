@@ -22,6 +22,8 @@ class SupportController extends BaseAdminController
      */
     public function index()
     {
+        $this->customAuthorize('admin.support');
+
         return view('admin.support.index');
     }
 
@@ -30,6 +32,8 @@ class SupportController extends BaseAdminController
      */
     public function faq()
     {
+        $this->customAuthorize('admin.support');
+
         return view('admin.support.faq');
     }
 
@@ -38,6 +42,8 @@ class SupportController extends BaseAdminController
      */
     public function contact()
     {
+        $this->customAuthorize('admin.support');
+
         return view('admin.support.contact');
     }
 
@@ -47,6 +53,8 @@ class SupportController extends BaseAdminController
      */
     public function contact_post(ContactRequest $request)
     {
+        $this->customAuthorize('admin.support');
+
         Mail::to('web@protecms.com')->send(new SendContact($request));
 
         flash('Sugerencia enviada correctamente. Gracias.');
@@ -59,6 +67,8 @@ class SupportController extends BaseAdminController
      */
     public function changelog()
     {
+        $this->customAuthorize('admin.support');
+
         return view('admin.support.changelog');
     }
 

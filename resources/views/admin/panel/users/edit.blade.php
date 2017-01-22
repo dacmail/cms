@@ -126,7 +126,7 @@
                                         <select name="permissions[admin.design]" id="" class="form-control">
                                             <option value="0">Sin acceso</option>
                                             <option value="1" {{ $user->hasPermission('admin.design') ? 'selected' : '' }}>Acceso total</option>
-                                            <option value="view" {{ $user->hasPermission('admin.design.view') ? 'selected' : '' }}>Solo ver</option>
+                                            {{-- <option value="view" {{ $user->hasPermission('admin.design.view') ? 'selected' : '' }}>Solo ver</option> --}}
                                         </select>
                                     </div>
                                     <div class="col-md-4">

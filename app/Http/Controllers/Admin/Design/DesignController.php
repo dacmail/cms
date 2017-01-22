@@ -24,6 +24,8 @@ class DesignController extends BaseAdminController
      */
     public function index()
     {
+        $this->customAuthorize('admin.design');
+
         chdir(public_path('assets/images/backgrounds'));
         $backgrounds = glob('*.png');
 
@@ -35,6 +37,8 @@ class DesignController extends BaseAdminController
      */
     public function config()
     {
+        $this->customAuthorize('admin.design');
+
         return view('admin.design.config');
     }
 
@@ -43,6 +47,8 @@ class DesignController extends BaseAdminController
      */
     public function css()
     {
+        $this->customAuthorize('admin.design');
+
         return view('admin.design.css');
     }
 
@@ -52,6 +58,8 @@ class DesignController extends BaseAdminController
      */
     public function css_update(Request $request)
     {
+        $this->customAuthorize('admin.design');
+
         $this->web->setConfig('themes.default.css', $request->get('css'));
 
         flash('CSS actualizado correctamente');
@@ -65,6 +73,8 @@ class DesignController extends BaseAdminController
      */
     public function config_update(Request $request)
     {
+        $this->customAuthorize('admin.design');
+
         $this->web->setConfig('posts.pagination', $request->get('posts_pagination'));
         $this->web->setConfig('animals.fields', json_encode($request->get('animals_fields')));
         $this->web->setConfig('animals.contact_email', $request->get('animals_contact_email'));
@@ -80,6 +90,8 @@ class DesignController extends BaseAdminController
      */
     public function update(UpdateRequest $request)
     {
+        $this->customAuthorize('admin.design');
+
         if ($request->has('logo') && ! empty($request->get('logo'))) {
             $logo = Image::make($request->get('logo'))->resize(400, 400, function ($constraint) {
                 $constraint->upsize();

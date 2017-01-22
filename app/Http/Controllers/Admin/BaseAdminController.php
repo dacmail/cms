@@ -28,6 +28,15 @@ class BaseAdminController extends Controller
         view()->share('langform', Request::input('langform') ?: config('app.locale'));
     }
 
+    public function customAuthorize($permissions)
+    {
+        $method = is_array($permissions) ? 'hasPermissions' : 'hasPermission';
+
+        if (! Auth::user()->$method($permissions)) {
+            abort(401);
+        }
+    }
+
     /**
      * Get default sidebar.
      *
