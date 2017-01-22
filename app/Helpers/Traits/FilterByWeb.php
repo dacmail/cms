@@ -28,7 +28,7 @@ trait FilterByWeb
     {
         parent::boot();
 
-        if (Schema::hasColumn(self::getTableName(), 'web_id')
+        if (method_exists(get_called_class(), 'web')
             && ! in_array(self::getTableName(), self::$excludedTables)) {
 
             if (! app()->runningInConsole() || app()->environment() === 'testing') {
@@ -36,7 +36,6 @@ trait FilterByWeb
                     $model->web_id = app('App\Models\Webs\Web')->id;
                 });
             }
-
 
             static::addGlobalScope('web', function (Builder $builder) {
                 if (app('App\Models\Webs\Web')->subdomain === 'admin' && app('App\Models\Webs\Web')->getConfig('web')) {

@@ -20,6 +20,7 @@
         <h4 class="margin-top-40">22-01-2017</h4>
         <ul>
             <li><span class="label label-info">novedad</span> Ahora cuando se intenta erróneamente 5 veces el acceso al panel, se bloquea al usuario durante 1 minuto.</li>
+            <li><span class="label label-warning">corrección</span> Optimizada la carga de la página web y el panel de administración.</li>
         </ul>
         <h4 class="margin-top-40">21-01-2017</h4>
         <ul>

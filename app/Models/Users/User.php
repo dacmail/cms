@@ -49,13 +49,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * @var array
-     */
-    protected $with = [
-        'permissions', 'notifications'
-    ];
-
-    /**
      * All of the relationships to be touched.
      *
      * @var array
