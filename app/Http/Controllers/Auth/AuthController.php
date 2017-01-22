@@ -8,9 +8,12 @@ use App\Models\Users\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 
 class AuthController extends Controller
 {
+    use ThrottlesLogins;
+
     protected $user;
 
     public function __construct(User $user)
@@ -43,6 +46,12 @@ class AuthController extends Controller
 
     public function login_post(LoginRequest $request)
     {
+        if ($this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
         if (! app('App\Models\Webs\Web')->users()->where('email', $request->get('email'))->exists()) {
             flash('Ha ocurrido un error al enviar el formulario. Revisa los campos.', 'error');
             return back()->withErrors([
@@ -51,6 +60,7 @@ class AuthController extends Controller
         }
 
         if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
+            $this->clearLoginAttempts($request);
             flash('¡Hola ' . Auth::user()->name . '!');
             if ($request->has('to')) {
                 return redirect()->to($request->get('to'));
@@ -61,10 +71,24 @@ class AuthController extends Controller
             }
         }
 
+        $this->incrementLoginAttempts($request);
+
         flash('Ha ocurrido un error al enviar el formulario. Revisa los campos.', 'error');
-        return back()->withErrors([
-            'email' => ['El correo electrónico o la contraseña no son válidos']
-        ]);
+    
+        $logins_to_block = $this->limiter()->retriesLeft($this->throttleKey($request), 5);
+        if ($logins_to_block > 2) {
+            return back()->withErrors([
+                'email' => ['El correo electrónico o la contraseña no son válidos.']
+            ]);
+        } elseif ($logins_to_block === 0) {
+            return back()->withErrors([
+                'email' => ['Su cuenta ha sido temporalmente bloqueada. Prueba de nuevo en 1 minuto.']
+            ]); 
+        } else {
+            return back()->withErrors([
+                'email' => ['El correo electrónico o la contraseña no son válidos. Le quedan ' . $logins_to_block . ' intentos, luego se bloqueará al usuario durante 1 minuto.']
+            ]);    
+        }
     }
 
     public function recovery_post(Request $request)
@@ -108,5 +132,10 @@ class AuthController extends Controller
 
         Auth::logout();
         return redirect()->route('auth::login');
+    }
+
+    public function username()
+    {
+        return 'email';
     }
 }
