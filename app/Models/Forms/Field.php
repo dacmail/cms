@@ -52,11 +52,6 @@ class Field extends BaseModel
     /**
      * Relations
      */
-    public function web()
-    {
-        return $this->belongsTo(Web::class);
-    }
-
     public function form()
     {
         return $this->belongsTo(Form::class);
