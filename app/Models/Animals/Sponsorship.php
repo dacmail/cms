@@ -65,11 +65,6 @@ class Sponsorship extends BaseModel
     /**
      * Relations
      */
-    public function web()
-    {
-        return $this->belongsTo(Web::class);
-    }
-
     public function animal()
     {
         return $this->belongsTo(Animal::class);
