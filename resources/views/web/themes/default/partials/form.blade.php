@@ -11,7 +11,7 @@
         <div class="form-group text-right">
             <small>Todos los campos con * son obligatorios</small>
         </div>
-        @foreach ($form->fields as $field)
+        @foreach ($form->fields()->orderBy('order')->get() as $field)
             <div class="form-group {{ $errors->has($field->name) ? 'has-error' : '' }}">
                 <label class="control-label">{{ $field->required ? '*' : '' }} {{ $field->title }}</label>
                 <span class="help-block">{{ $errors->first($field->name) }}</span>
