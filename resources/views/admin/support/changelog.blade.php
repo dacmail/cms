@@ -21,6 +21,8 @@
         <ul>
             <li><span class="label label-info">novedad</span> Ahora cuando se intenta erróneamente 5 veces el acceso al panel, se bloquea al usuario durante 1 minuto.</li>
             <li><span class="label label-warning">corrección</span> Optimizada la carga de la página web y el panel de administración.</li>
+            <li><span class="label label-warning">corrección</span> Corregido un error que provocaba que los campos de los formularios insertados en las páginas no apareciesen en el orden correcto.</li>
+            <li><span class="label label-warning">corrección</span> Corregido un error que provocaba que, sin tener permisos, un voluntario pudiese acceder a las secciones Página web y Soporte.</li>
         </ul>
         <h4 class="margin-top-40">21-01-2017</h4>
         <ul>
