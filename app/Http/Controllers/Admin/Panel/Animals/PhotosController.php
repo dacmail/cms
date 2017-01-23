@@ -35,7 +35,7 @@ class PhotosController extends BaseAdminController
      */
     public function index($id)
     {
-        $animal = $this->web->animals()->with(['translations', 'media' => function ($query) {
+        $animal = $this->animal->with(['translations', 'media' => function ($query) {
             $query->where('type', 'photo');
         }])->findOrFail($id);
 
@@ -49,7 +49,7 @@ class PhotosController extends BaseAdminController
      */
     public function store(Request $request, $id)
     {
-        $animal = $this->web->animals()->findOrFail($id);
+        $animal = $this->animal->findOrFail($id);
 
         if ($request->hasFile('photos')) {
             $photos = [];
@@ -99,14 +99,14 @@ class PhotosController extends BaseAdminController
      */
     public function main($animal_id, $id)
     {
-        $this->web->animals()
+        $this->animal
             ->findOrFail($animal_id)
             ->photos()
             ->update([
                 'main' => 0
             ]);
 
-        $this->web->animals()
+        $this->animal
             ->findOrFail($animal_id)
             ->photos()
             ->findOrFail($id)
@@ -126,7 +126,7 @@ class PhotosController extends BaseAdminController
      */
     public function delete($animal_id, $id)
     {
-        $photo = $this->web->animals()
+        $photo = $this->animal
             ->findOrFail($animal_id)
             ->photos()
             ->findOrFail($id);
@@ -147,7 +147,7 @@ class PhotosController extends BaseAdminController
 
         $photo->delete();
 
-        if ($main && $photo = $this->web->animals()->findOrFail($animal_id)->photos()->first()) {
+        if ($main && $photo = $this->animal->findOrFail($animal_id)->photos()->first()) {
             $photo->update([
                 'main' => 1
             ]);

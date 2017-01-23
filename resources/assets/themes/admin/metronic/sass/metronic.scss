@@ -1,0 +1,12 @@
+@import 'node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+
+@import 'global/_components.scss';
+@import 'global/_plugins.scss';
+@import 'layouts/layout/layout.scss';
+
+@import 'layouts/layout/themes/light.scss';
+
+@import 'pages/login.scss';
+@import 'pages/faq.scss';
+
+@import 'custom';
