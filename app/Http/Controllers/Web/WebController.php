@@ -34,4 +34,11 @@ class WebController extends BaseWebController
 
         return view('index', compact('last_posts'));
     }
+
+    public function custom_css(Request $request)
+    {
+        return response()
+            ->view('customcss')
+            ->header('Content-Type', 'text/css');
+    }
 }

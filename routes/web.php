@@ -3,6 +3,8 @@
 Route::group(['as' => 'web::', 'namespace' => 'Web', 'middleware' => ['checkInstallation', 'redirectIfHasDomain']], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'WebController@index']);
 
+    Route::get('/custom_css', ['as' => 'custom_css', 'uses' => 'WebController@custom_css']);
+
     Route::group(['as' => 'animals::', 'namespace' => 'Animals'], function () {
         Route::group(['prefix' => trans_choice('routes.animals', 2)], function () {
             Route::get('/', ['as' => 'index', 'uses' => 'AnimalsController@index']);

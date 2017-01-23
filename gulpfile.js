@@ -101,8 +101,6 @@ elixir.extend('themesDefault', function (mix) {
     mix.copy('./node_modules/font-awesome/fonts', 'public/build/themes/default/fonts');
 
     mix.copy('resources/assets/themes/web/default/images', 'public/themes/default/images');
-    mix.copy('resources/assets/themes/web/default/css/bradius.css', 'public/themes/default/css/bradius.css');
-    mix.copy('resources/assets/themes/web/default/css/default.php', 'public/themes/default/css/default.php');
 });
 
 /********************************************
